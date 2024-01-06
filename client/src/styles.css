@@ -2,6 +2,47 @@
   box-sizing: border-box;
 }
 
+html {
+  margin: 0;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+}
+
+h1 {
+  color: rgb(12, 14, 22);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.04688rem;
+  margin: 0;
+  margin-bottom: 0.19rem;
+}
+
+h3 {
+  color: rgb(136, 142, 176);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 0.9375rem; /* 115.385% */
+  letter-spacing: -0.00625rem;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.07031rem;
+    margin-bottom: 0.38rem;
+  }
+  h3 {
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0.9375rem; /* 115.385% */
+    letter-spacing: -0.00625rem;
+  }
+}
 button {
   background-color: rgba(0, 0, 0, 0);
   border: 0;
@@ -43,6 +84,7 @@ button:focus {
   height: 4.5rem;
   padding: 0;
   background: #373B53;
+  margin-bottom: 2.25rem;
 }
 
 .navigationBar__logoLink {
@@ -75,14 +117,17 @@ button:focus {
     height: 5rem;
     padding: 0;
     background: #373B53;
+    margin-bottom: 3.87rem;
   }
 }
 @media screen and (min-width: 1024px) {
   .navigationBar {
     position: fixed;
+    top: 0;
     width: 6.4375rem;
     height: 100%;
     border-radius: 0px 30px 30px 0;
+    margin-bottom: 0rem;
   }
   .navigationBar__button-container {
     width: 100%;
@@ -122,5 +167,29 @@ button:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+.container {
+  margin-top: 0;
+}
+
+.form-select {
+  border: 0;
+  outline: 0;
+  color: rgb(12, 14, 22);
+  text-align: right;
+  font-family: League Spartan;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .form-select {
+    font-size: 0.9375rem;
+    line-height: 0.9375rem;
+    letter-spacing: -0.01563rem;
   }
 }/*# sourceMappingURL=styles.css.map */
