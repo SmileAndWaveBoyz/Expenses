@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  outline: 0;
+}
+button:hover {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+
+.btn {
+  border-radius: 24px;
+  outline: none;
+  border: none;
+}
+
+.btn-primary {
+  background-color: rgb(124, 93, 250);
+}
+.btn-primary:hover {
+  background-color: rgb(146, 119, 255);
+}
+
+.btn-red {
+  background-color: rgb(236, 87, 87);
+}
+.btn-red:hover {
+  background-color: rgb(255, 151, 151);
+}
+
+.errorMessage {
+  font-size: 0.8rem;
+  color: red;
+}
+
+.navigationBar {
+  height: 4.5rem;
+  padding: 0;
+  background: #373B53;
+}
+
+.navigationBar__logoLink {
+  height: 100%;
+}
+
+.navigationBar__logo {
+  height: 100%;
+}
+
+.navigationBar__avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+}
+
+.navigationBar__themeButton {
+  height: 100%;
+  padding: 1.25rem 1.5rem;
+}
+
+.navigationBar__avatarButton {
+  height: 100%;
+  border-left: 2px solid #494E6E;
+  padding: 1.25rem 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .navigationBar {
+    height: 5rem;
+    padding: 0;
+    background: #373B53;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .navigationBar {
+    position: fixed;
+    width: 6.4375rem;
+    height: 100%;
+    border-radius: 0px 30px 30px 0;
+  }
+  .navigationBar__button-container {
+    width: 100%;
+  }
+  .navigationBar__logOutButton, .navigationBar__themeButton, .navigationBar__avatarButton {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+  .navigationBar__logoLink {
+    width: 6.4375rem;
+    height: 6.4375rem;
+  }
+  .navigationBar__logo {
+    width: 6.4375rem;
+    height: 6.4375rem;
+  }
+  .navigationBar__avatarButton {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .navigationBar__avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .navigationBar__themeButton {
+    height: 20px;
+    padding: 1.25rem 1.5rem;
+  }
+  .navigationBar__avatarButton {
+    height: 5.5rem;
+    width: 100%;
+    border-top: 2px solid #494E6E;
+    border-left: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,159 @@
+*{
+    box-sizing: border-box;
+    // outline: 2px solid red;
+}
+
+$blue1: rgb(124, 93, 250);
+$blue2: rgb(146, 119, 255);
+$red1: rgb(236, 87, 87);
+$red2: rgb(255, 151, 151);
+$white: rgb(248, 248, 251);
+$grey1: rgb(223, 227, 250);
+$grey2: rgb(126, 136, 195);
+$grey3: rgb(136, 142, 176);
+$black1: rgb(37, 41, 69);
+$black2: rgb(30, 33, 57);
+$black3: rgb(20, 22, 37);
+$black4: rgb(12, 14, 22);
+
+body{
+
+}
+
+button{
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    outline: 0;
+    &:hover {
+        outline: none;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn{
+    border-radius: 24px;
+    outline: none;
+    border: none;
+} 
+
+.btn-primary{
+    background-color: $blue1;
+
+    &:hover {
+        background-color: $blue2;
+    }
+}
+
+.btn-red{
+    background-color: $red1;
+
+    &:hover {
+        background-color: $red2;
+    }
+}
+
+.errorMessage{
+    font-size: 0.8rem;
+    color: red;
+}
+
+// Navigation bar 
+.navigationBar{
+    height: 4.5rem;
+    padding: 0;
+    background: #373B53;
+}
+
+.navigationBar__logoLink{
+    height: 100%;
+}
+
+.navigationBar__logo{
+    height: 100%;
+}
+
+.navigationBar__avatar{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+}
+
+.navigationBar__themeButton{
+    height: 100%;
+    padding: 1.25rem 1.5rem;
+}
+
+.navigationBar__avatarButton{
+    height: 100%;
+    border-left: 2px solid #494E6E;
+    padding: 1.25rem 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .navigationBar{
+        height: 5rem;
+        padding: 0;
+        background: #373B53;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .navigationBar{
+        position: fixed;
+        width: 6.4375rem;
+        height: 100%;
+        border-radius: 0px 30px 30px 0 ;
+    }
+
+    .navigationBar__button-container{
+        width: 100%;
+    }
+
+    .navigationBar__logOutButton, .navigationBar__themeButton, .navigationBar__avatarButton{
+        margin: 0;
+        margin-bottom: 2rem;
+    }
+
+    .navigationBar__logoLink{
+        width: 6.4375rem;
+        height: 6.4375rem;
+    }
+    
+    .navigationBar__logo{
+        width: 6.4375rem;
+        height: 6.4375rem;
+    }
+
+    .navigationBar__avatarButton{
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .navigationBar__avatar{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .navigationBar__themeButton{
+        height: 20px;
+        padding: 1.25rem 1.5rem;
+        
+    }
+
+    .navigationBar__avatarButton{
+        height: 5.5rem;
+        width: 100%;
+        border-top: 2px solid #494E6E;
+        border-left: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
