@@ -79,6 +79,15 @@ button{
     border-radius: 24px;
     outline: none;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 3rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 0.9375rem; /* 100% */
+    letter-spacing: -0.01563rem;
 } 
 
 .btn-primary{
@@ -229,4 +238,11 @@ button{
         line-height: 0.9375rem; 
         letter-spacing: -0.01563rem;
     }
+}
+
+.plusSVG{
+    margin-right: 0.5rem;
+}
+.header__newButton{
+    font-size: 0.9375rem;
 }
