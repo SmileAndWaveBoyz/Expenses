@@ -219,6 +219,10 @@ button{
     margin-top: 0;
 }
 
+#header{
+    position: relative;
+}
+
 .form-select{
     border: 0;
     outline: 0;
@@ -232,17 +236,83 @@ button{
     background-color: transparent;
 }
 
+.plusSVG{
+    margin-right: 0.5rem;
+    position: relative;
+    
+}
+.header__newButton{
+    font-size: 0.9375rem;
+    height: 100%;
+}
+
+.inputContainer{
+    position: absolute;
+    top: 4rem;
+}
+
+.header__filterButton{
+    margin-right: 1.61rem;
+    display: flex;
+    flex-direction: row;
+    height: 1rem;
+    cursor: pointer;
+}
+
+
+.header__filterButtonSVG{
+    margin-left: 0.75rem;
+    transform: rotateX(180deg);
+    transition: transform 0.5s;
+
+    &:hover{
+        transform: rotateX(0);
+    }
+}
+
+.header__filterPar{
+    color: var(--08, $black4);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 0.9375rem; /* 100% */
+    letter-spacing: -0.01563rem;
+}
+
+.mobileNoDisplay{
+    display: none;
+}
+
 @media screen and (min-width: 768px) {
     .form-select{
         font-size: 0.9375rem;
         line-height: 0.9375rem; 
         letter-spacing: -0.01563rem;
     }
+
+    .header__newButton{
+        width: 9.375rem;
+        height: 3rem;
+    }
+
+    .header__filterButton{
+        margin-right: 2.53rem;
+    }
+
+    .mobileNoDisplay{
+        display: inline;
+    }
 }
 
-.plusSVG{
-    margin-right: 0.5rem;
+@media screen and (min-width: 1024px) {
+    #header{
+        margin-top: 4.87rem;
+        
+    }
+    
+    .header__newButton{
+        margin-right: 2.53rem;
+    }
+
 }
-.header__newButton{
-    font-size: 0.9375rem;
-}
+
+
