@@ -1,47 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
+import Invoices from '../components/Invoices';
 
 function Users() {
  
-  const [arrowRotate, setArrowRotate] = useState(180)
-  const [listDisplay, setListDisplay] = useState("none")
 
-  function filterButtonClick() {
-    if (arrowRotate == 180) {
-      setArrowRotate(0)
-      setListDisplay("block")
-    } else{
-      setArrowRotate(180)
-      setListDisplay("none")
-    }
-
-    
-  }
 
   return (
-    <header className='container d-flex justify-content-between align-items-center' id='header'>
-      <div className="header" >
-        <h1>Invoices</h1>
-        <h3>There are 7 total invoices</h3>
-      </div>
-
-      <div className="header__right d-flex justify-content-between align-items-center">
-        
-        <button onClick={filterButtonClick} className='header__filterButton'><p className='header__filterPar'>Filter&nbsp;</p> <p className='header__filterPar mobileNoDisplay'> by status</p>  <svg style={{transform: `rotateX(${arrowRotate}deg)`}}  className='header__filterButtonSVG' xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">  <path d="M1 6.22803L5.2279 2.00013L9.4558 6.22803" stroke="#7C5DFA" stroke-width="2"/></svg></button>
-        <div className="inputContainer">
-          <form className='inputContainer__form' style={{display: listDisplay}}>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-              <label class="form-check-label" for="flexCheckDefault"> Default checkbox </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"/>
-              <label class="form-check-label" for="flexCheckChecked"> Checked checkbox </label>
-            </div>
-          </form>
-        </div>
-        <button className='btn btn-primary header__newButton'><svg className='plusSVG' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="white"/><path d="M17.3131 21.0234V17.3136H21.0229V14.7333H17.3131V11.0234H14.7328V14.7333H11.0229V17.3136H14.7328V21.0234H17.3131Z" fill="#7C5DFA"/></svg>New</button>
-      </div>
-    </header>
+    <>
+      <Navbar/>
+      <Header/>
+      <Invoices/>
+    </>
   )
 }
 

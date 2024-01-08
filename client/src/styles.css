@@ -184,6 +184,7 @@ button:focus {
 
 #header {
   position: relative;
+  margin-bottom: 2rem;
 }
 
 .form-select {
@@ -243,7 +244,32 @@ button:focus {
   display: none;
 }
 
+.inputContainer__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background: #FFF;
+  box-shadow: 0px 10px 20px 0px rgba(72, 84, 159, 0.25);
+  padding: 1.5rem;
+  padding-bottom: 0.1rem;
+}
+
+.form-check {
+  margin-bottom: 1rem;
+}
+
+.form-check-label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+}
+
 @media screen and (min-width: 768px) {
+  #header {
+    margin-bottom: 3.44rem;
+  }
   .form-select {
     font-size: 0.9375rem;
     line-height: 0.9375rem;
@@ -267,4 +293,84 @@ button:focus {
   .header__newButton {
     margin-right: 2.53rem;
   }
+}
+.invoices__row {
+  border-radius: 0.5rem;
+  background: #FFF;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+}
+
+.invoices__id {
+  color: rgb(12, 14, 22);
+  font-family: League Spartan;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 0.9375rem;
+  letter-spacing: -0.01563rem;
+  display: inline;
+}
+
+.invoices__idH {
+  color: rgb(126, 136, 195);
+  font-family: League Spartan;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 0.9375rem;
+  letter-spacing: -0.01563rem;
+  display: inline;
+}
+
+.invoices__date {
+  color: rgb(126, 136, 195);
+  font-family: League Spartan;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.9375rem;
+  letter-spacing: -0.00625rem;
+  display: inline;
+}
+
+.invoices__date.due {
+  color: rgb(136, 142, 176);
+}
+
+.invoices__name {
+  color: rgb(126, 136, 195);
+  text-align: right;
+  font-family: League Spartan;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.9375rem; /* 115.385% */
+  letter-spacing: -0.00625rem;
+}
+
+.invoices__status-circle.green {
+  fill: #33D69F;
+}
+
+.invoices__status {
+  font-family: League Spartan;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  width: 6.5rem;
+  height: 2.5rem;
+  background: rgba(51, 214, 159, 0.0571);
+  border-radius: 0.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.invoices__status svg {
+  margin-right: 0.5rem;
+}
+
+.invoices__status.paid {
+  color: #33D69F;
 }/*# sourceMappingURL=styles.css.map */

@@ -32,7 +32,6 @@ export default function DefaultLayout() {
 
   return (
     <div id='defaultLayout'>
-      <Navbar/>
       <Outlet />
     </div>
   );

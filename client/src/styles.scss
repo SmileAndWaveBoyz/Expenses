@@ -42,9 +42,6 @@ h3{
     margin: 0;
 }
 
-header{
-
-}
 
 @media screen and (min-width: 768px) {
     h1{
@@ -221,6 +218,7 @@ button{
 
 #header{
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .form-select{
@@ -282,7 +280,34 @@ button{
     display: none;
 }
 
+.inputContainer__form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    background: #FFF;
+    box-shadow: 0px 10px 20px 0px rgba(72, 84, 159, 0.25);
+    // width: 12rem;
+    // height: 8rem;
+    padding: 1.5rem;
+    padding-bottom: 0.1rem;
+}
+
+.form-check{
+    margin-bottom: 1rem;
+}
+
+.form-check-label{
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 0.9375rem; /* 100% */
+    letter-spacing: -0.01563rem;
+}
+
 @media screen and (min-width: 768px) {
+    #header{
+        margin-bottom: 3.44rem;
+    }
     .form-select{
         font-size: 0.9375rem;
         line-height: 0.9375rem; 
@@ -316,3 +341,85 @@ button{
 }
 
 
+//Invoices
+.invoices__row{
+    border-radius: 0.5rem;
+    background: #FFF;
+    box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
+}
+
+.invoices__id{
+    color: $black4;
+    font-family: League Spartan;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.9375rem;
+    letter-spacing: -0.01563rem;
+    display: inline;
+}
+
+.invoices__idH{
+    color: $grey2;
+    font-family: League Spartan;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.9375rem;
+    letter-spacing: -0.01563rem;
+    display: inline;
+}
+
+.invoices__date{
+    color: $grey2;
+    font-family: League Spartan;
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0.9375rem;
+    letter-spacing: -0.00625rem;
+    display: inline;
+}
+
+.invoices__date.due{
+    color: $grey3;
+}
+
+.invoices__name{
+    color: $grey2;
+    text-align: right;
+    font-family: League Spartan;
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0.9375rem; /* 115.385% */
+    letter-spacing: -0.00625rem;
+}
+
+.invoices__status-circle.green{
+    fill: #33D69F;
+}
+
+.invoices__status{
+    font-family: League Spartan;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.9375rem; /* 100% */
+    letter-spacing: -0.01563rem;
+    width: 6.5rem;
+    height: 2.5rem;
+    background: rgba(51, 214, 159, 0.0571);
+    border-radius: 0.375rem;   
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+
+        svg{
+            margin-right: 0.5rem;
+        }
+}
+
+.invoices__status.paid{
+    color: #33D69F; 
+}
