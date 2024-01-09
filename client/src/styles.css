@@ -8,6 +8,7 @@ html {
 
 body {
   font-family: "League Spartan", sans-serif;
+  background-color: rgb(248, 248, 251);
 }
 
 h1 {
@@ -298,6 +299,12 @@ button:focus {
   border-radius: 0.5rem;
   background: #FFF;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+  padding: 1.56rem 1.5rem 1.38rem 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 8.375rem;
+  margin-bottom: 1rem;
 }
 
 .invoices__id {
@@ -320,6 +327,10 @@ button:focus {
   line-height: 0.9375rem;
   letter-spacing: -0.01563rem;
   display: inline;
+}
+
+.invoices_dateContainer {
+  margin-bottom: 0.56rem;
 }
 
 .invoices__date {
@@ -373,4 +384,73 @@ button:focus {
 
 .invoices__status.paid {
   color: #33D69F;
+}
+
+.invoices_left {
+  height: 100%;
+}
+
+.invoices_right {
+  height: 100%;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 768px) {
+  .invoices__row {
+    padding: 0 1.5rem;
+    display: flex;
+    height: 4.5rem;
+  }
+  .invoices_left {
+    width: 50%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .invoices_right {
+    width: 50%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .invoices__id {
+    margin-right: 1.6rem;
+  }
+  .invoices__name {
+    margin-right: 2.5rem;
+    margin-left: 2.2rem;
+    margin-bottom: 0;
+  }
+  .invoices_dateContainer {
+    margin-right: 3.19rem;
+    margin-bottom: 0;
+  }
+  .invoices__arrow {
+    margin: 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .invoices__row {
+    padding: 0 1.5rem;
+    padding-left: 2rem;
+  }
+  .invoices__id {
+    margin-right: 2.75rem;
+  }
+  .invoices__name {
+    margin-right: 2.5rem;
+    margin-left: 10.2rem;
+    margin-bottom: 0;
+  }
+  .invoices_dateContainer {
+    margin-right: 3.69rem;
+    margin-bottom: 0;
+  }
 }/*# sourceMappingURL=styles.css.map */
