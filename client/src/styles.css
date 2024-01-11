@@ -130,7 +130,7 @@ button:focus {
     margin-bottom: 3.87rem;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
   .navigationBar {
     position: fixed;
     top: 0;
@@ -359,8 +359,16 @@ button:focus {
   letter-spacing: -0.00625rem;
 }
 
-.invoices__status-circle.green {
+.invoices__status-circle.paid {
   fill: #33D69F;
+}
+
+.invoices__status-circle.pending {
+  fill: #FF8F00;
+}
+
+.invoices__status-circle.draft {
+  fill: #373B53;
 }
 
 .invoices__status {
@@ -372,18 +380,30 @@ button:focus {
   letter-spacing: -0.01563rem;
   width: 6.5rem;
   height: 2.5rem;
-  background: rgba(51, 214, 159, 0.0571);
   border-radius: 0.375rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  margin-right: 1.25rem;
 }
 .invoices__status svg {
   margin-right: 0.5rem;
 }
 
 .invoices__status.paid {
+  background: rgba(51, 214, 159, 0.06);
   color: #33D69F;
+}
+
+.invoices__status.pending {
+  background: rgba(255, 143, 0, 0.06);
+  color: #FF8F00;
+}
+
+.invoices__status.draft {
+  background-color: rgba(55, 59, 83, 0.06);
+  color: #373B53;
 }
 
 .invoices_left {
@@ -396,7 +416,7 @@ button:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 768px) {
@@ -453,4 +473,34 @@ button:focus {
     margin-right: 3.69rem;
     margin-bottom: 0;
   }
+}
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.empty__image {
+  margin-bottom: 4.12rem;
+}
+
+.empty__heading {
+  color: rgb(12, 14, 22);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.04688rem;
+  margin-bottom: 1.44rem;
+}
+
+.empty__paragraph {
+  color: rgb(136, 142, 176);
+  text-align: center;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 0.9375rem; /* 115.385% */
+  letter-spacing: -0.00625rem;
+  text-align: center;
 }/*# sourceMappingURL=styles.css.map */
