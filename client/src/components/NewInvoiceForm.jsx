@@ -1,11 +1,42 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from "react-router-dom";
+import { useStateContext } from '../contexts/ContextProvider';
 
-function NewInvoiceForm() {
+function NewInvoiceForm(props) {
 
     const [errors, setErrors] = useState(null)
     const senderAddressStreetRef = useRef(null)
     const senderAddressCityRef = useRef(null)
+    const { newForm, setNewForm} = useStateContext()
+    const [newFormPosition, setNewFormPosition] = useState(window.innerWidth)  
+    
+    useEffect(() => {
+
+      if (newForm) {
+        setNewFormPosition(0)
+      } else{
+        setNewFormPosition(window.innerWidth)
+      }
+
+      window.addEventListener('resize', handleResize);
+      function handleResize() {
+        if (newForm) {
+            setNewFormPosition(0)
+          } else{
+            setNewFormPosition(window.innerWidth)
+          }
+      }
+    
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+
+    }, [newForm])
+
+    function goBack() {
+        setNewForm(false)
+    }
+    
 
     function onSubmit() {
         
@@ -13,9 +44,9 @@ function NewInvoiceForm() {
 
   return (
     <>
-        <div className='nForm'>
+        <div className='nForm' style={{transform: `translateX(-${newFormPosition}px)`}}>
             <div className="nForm__Padding">
-                <button className='nForm__backButton'> <svg className='nForm__backButtonSVG'  width="6" height="11" viewBox="0 0 6 11" fill="none">  <path d="M4.3418 0.885742L0.113895 5.11364L4.3418 9.34155" stroke="#7C5DFA" stroke-width="2"/></svg>Go back</button>
+                <button onClick={goBack} className='nForm__backButton'> <svg className='nForm__backButtonSVG'  width="6" height="11" viewBox="0 0 6 11" fill="none">  <path d="M4.3418 0.885742L0.113895 5.11364L4.3418 9.34155" stroke="#7C5DFA" stroke-width="2"/></svg>Go back</button>
                 <h1 className='nForm__header'>New Invoice</h1>
 
                 <form className='nForm_form' onSubmit={onSubmit}>

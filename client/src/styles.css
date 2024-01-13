@@ -541,6 +541,8 @@ button:focus {
   width: 100%;
   position: absolute;
   top: 4.5rem;
+  transform: translateX(0px);
+  transition: transform 0.25s;
   z-index: 4;
   background-color: white;
 }
@@ -556,6 +558,7 @@ button:focus {
   line-height: 0.9375rem; /* 100% */
   letter-spacing: -0.01563rem;
   margin-bottom: 1.62rem;
+  cursor: pointer;
 }
 
 .nForm__backButtonSVG {

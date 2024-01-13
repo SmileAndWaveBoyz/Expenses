@@ -3,8 +3,10 @@ import { createContext, useState, useContext } from "react";
 const StateContext = createContext({
     user: null,
     token: null,
+    newForm: 0,
     setUser: () => {},
-    setToken: () => {}
+    setToken: () => {},
+    setNewForm: () =>{}
 })
 
 export const ContextProvider = ({children})=>{
@@ -21,7 +23,9 @@ export const ContextProvider = ({children})=>{
         }
     };
 
-    return  <StateContext.Provider value={{user, token, setUser, setToken}}>{children}</StateContext.Provider>
+    const [newForm, setNewForm] = useState(false)
+
+    return  <StateContext.Provider value={{user, token, newForm, setUser, setToken, setNewForm}}>{children}</StateContext.Provider>
 }
 
 export const useStateContext = () => {

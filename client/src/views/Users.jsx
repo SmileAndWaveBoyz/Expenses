@@ -7,11 +7,10 @@ import NewInvoiceForm from "../components/NewInvoiceForm"
 function Users() {
  
 
-
   return (
     <>
       <Navbar/>
-      <Header/>
+      <Header />
       <NewInvoiceForm/>
       <Invoices/>
     </>

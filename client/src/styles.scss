@@ -608,10 +608,12 @@ button{
     width: 100%;
     position: absolute;
     top: 4.5rem;
+    transform: translateX(0px);
+    transition: transform 0.25s;
     z-index: 4;
     background-color: white;
-    
 }
+
 
 .nForm__Padding{
     padding: 2.06rem 1.5rem;
@@ -624,6 +626,7 @@ button{
     line-height: 0.9375rem; /* 100% */
     letter-spacing: -0.01563rem;
     margin-bottom: 1.62rem;
+    cursor: pointer;
 }
 
 .nForm__backButtonSVG{
@@ -752,8 +755,4 @@ input[type="date"]:before {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.nForm__discardButton{
-    // width: 5.25rem;
 }
