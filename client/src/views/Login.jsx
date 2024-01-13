@@ -69,7 +69,7 @@ function Login() {
 
           <button type="submit" className="btn btn-primary w-100 mb-3">Login</button>
           
-          <div className="row justify-content-md-center">
+          <div className="row justify-content-center">
             <p>Not registered? <Link to={"/signup"}>Create an cccount</Link></p> 
           </div>
         </form>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Invoices from '../components/Invoices';
+import NewInvoiceForm from "../components/NewInvoiceForm"
 
 function Users() {
  
@@ -11,6 +12,7 @@ function Users() {
     <>
       <Navbar/>
       <Header/>
+      <NewInvoiceForm/>
       <Invoices/>
     </>
   )

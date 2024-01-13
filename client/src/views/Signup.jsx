@@ -102,7 +102,7 @@ function Signup() {
 
         <button onClick={onSubmit} className="btn btn-primary w-100 mb-3">Sign up</button>
 
-        <div className="row justify-content-md-center">
+        <div className="row justify-content-center">
           <p>Already registered? <Link to={"/login"}>Log in</Link></p>
         </div>
       </form>

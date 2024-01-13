@@ -35,7 +35,7 @@ function Invoices() {
   }, []);
   
   return (
-      <>
+      <div id='invoices'> 
       {
         (data.length > 0) ?
 
@@ -68,7 +68,7 @@ function Invoices() {
             <p className='empty__paragraph'>  Create an invoice by clicking the <br></br><strong>New Invoice</strong> button and get started</p> 
         </main>
       }
-      </>
+      </div>
   )
 }
 

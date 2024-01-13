@@ -69,6 +69,10 @@ button:focus {
   font-weight: 700;
   line-height: 0.9375rem; /* 100% */
   letter-spacing: -0.01563rem;
+  padding-top: 1.06rem;
+  padding-bottom: 1.06rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .btn-primary {
@@ -85,6 +89,23 @@ button:focus {
   background-color: rgb(255, 151, 151);
 }
 
+.btn-transparent {
+  background: rgba(0, 0, 0, 0.1);
+  color: rgb(126, 136, 195);
+}
+.btn-transparent:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.btn-dark {
+  background: #373B53;
+  color: rgb(126, 136, 195);
+}
+.btn-dark:hover {
+  background: rgb(20, 22, 37);
+  color: rgb(126, 136, 195);
+}
+
 .errorMessage {
   font-size: 0.8rem;
   color: red;
@@ -95,6 +116,10 @@ button:focus {
   padding: 0;
   background: #373B53;
   margin-bottom: 2.25rem;
+  width: 100%;
+  position: relative;
+  top: 0;
+  z-index: 5;
 }
 
 .navigationBar__logoLink {
@@ -186,6 +211,7 @@ button:focus {
 #header {
   position: relative;
   margin-bottom: 2rem;
+  z-index: 0;
 }
 
 .form-select {
@@ -295,6 +321,11 @@ button:focus {
     margin-right: 2.53rem;
   }
 }
+.invoices {
+  position: relative;
+  z-index: 0;
+}
+
 .invoices__row {
   border-radius: 0.5rem;
   background: #FFF;
@@ -503,4 +534,148 @@ button:focus {
   line-height: 0.9375rem; /* 115.385% */
   letter-spacing: -0.00625rem;
   text-align: center;
+}
+
+.nForm {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 4.5rem;
+  z-index: 4;
+  background-color: white;
+}
+
+.nForm__Padding {
+  padding: 2.06rem 1.5rem;
+}
+
+.nForm__backButton {
+  color: rgb(12, 14, 22);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  margin-bottom: 1.62rem;
+}
+
+.nForm__backButtonSVG {
+  margin-right: 1.48rem;
+}
+
+.nForm__header {
+  letter-spacing: -0.03125rem;
+  line-height: 2rem;
+  margin-bottom: 1.37rem;
+}
+
+.nForm__header2 {
+  color: var(--01, #7C5DFA);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  margin-bottom: 1.5rem;
+}
+
+.nForm__header3 {
+  color: var(--01, #7C5DFA);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2.56rem;
+}
+
+.form-group label {
+  color: rgb(126, 136, 195);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 0.9375rem; /* 115.385% */
+  letter-spacing: -0.00625rem;
+}
+.form-group input:focus {
+  box-shadow: none;
+  border: 1px solid var(--02, #9277FF);
+}
+.form-group select:focus {
+  box-shadow: none;
+  border: 1px solid var(--02, #9277FF);
+}
+
+.nForm__ItemHeader {
+  color: #777F98;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2rem; /* 177.778% */
+  letter-spacing: -0.02344rem;
+  margin-top: 4.31rem;
+}
+
+.nForm__totalContainer {
+  height: 2.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nForm__total {
+  color: rgb(136, 142, 176);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  margin: 0;
+}
+
+.nForm__deleteButton {
+  margin-left: auto;
+  padding: 0;
+}
+
+.nForm__space {
+  height: 50%;
+}
+
+.nForm__deleteContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type=date]:before {
+  color: lightgrey;
+  content: "date" !important;
+  margin-right: 0.5em;
+}
+
+input[type=date]:focus:before {
+  content: "" !important;
+}
+
+.nForm__addButton {
+  color: rgb(126, 136, 195);
+  text-align: center;
+  font-family: League Spartan;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.nForm__rectangle {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  height: 4rem;
+  width: 100%;
+}
+
+.nForm_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }/*# sourceMappingURL=styles.css.map */
