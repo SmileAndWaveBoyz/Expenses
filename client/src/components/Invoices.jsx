@@ -1,10 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import jsonData from './data.json';
+import { useStateContext } from '../contexts/ContextProvider';
 
 function Invoices() {
+  const { token} = useStateContext()
+
   const [data, setData] = useState([])
   useEffect(() => {
-    setData(jsonData)
+    
+
+    const fetchInvoices = async () => {
+      try {
+        const response = await fetch('http://192.168.1.96:8000/api/invoices', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setData(data.invoices)
+        console.log('Invoices:', data.invoices);
+      } catch (error) {
+        console.error('Error fetching invoices:', error.message);
+      }
+    };
+
+    fetchInvoices();
   }, []);
   
   return (
@@ -17,7 +44,7 @@ function Invoices() {
                 <main key={index} className='container invoices'>
                     <section className='invoices__row'>
                       <div className="invoices_left">
-                        <h3 className='invoices__id'><h3 className='invoices__idH'>#</h3>{d.id}</h3> 
+                        <h3 className='invoices__id'><h3 className='invoices__idH'>#</h3>{d.invoiceID}</h3> 
                         <div className="invoices_dateContainer">
                             <p className='invoices__date due'>Due</p> <p className='invoices__date'> {d.paymentDue}</p> 
                         </div>
