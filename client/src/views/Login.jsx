@@ -19,15 +19,11 @@ function Login() {
     setErrors(null)
     axiosClient.post('/login', payload)
     .then(({data})=>{
-      console.log("success");
-      console.log(data);
       setUser(data.user)
       setToken(data.token)
     })
     .catch((error) => {
       const response = error. response
-      console.log("Error");
-      console.log(error);
       if (response && response.status === 422) {
         if (response.data.errors) {
           setErrors(response.data.errors)
