@@ -18,7 +18,7 @@ function NewInvoiceForm(props) {
         setNewFormPosition(window.innerWidth)
       }
 
-      window.addEventListener('resize', handleResize);
+      window.addEventListener('resize', handleResize)
       function handleResize() {
         if (newForm) {
             setNewFormPosition(0)
@@ -28,7 +28,7 @@ function NewInvoiceForm(props) {
       }
     
       return () => {
-        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('resize', handleResize)
       };
 
     }, [newForm])
@@ -45,7 +45,7 @@ function NewInvoiceForm(props) {
   return (
     <>
         <div className='nForm' style={{transform: `translateX(-${newFormPosition}px)`}}>
-            <div className="nForm__Padding">
+            <div className="nForm__Padding container">
                 <button onClick={goBack} className='nForm__backButton'> <svg className='nForm__backButtonSVG'  width="6" height="11" viewBox="0 0 6 11" fill="none">  <path d="M4.3418 0.885742L0.113895 5.11364L4.3418 9.34155" stroke="#7C5DFA" stroke-width="2"/></svg>Go back</button>
                 <h1 className='nForm__header'>New Invoice</h1>
 
@@ -83,18 +83,18 @@ function NewInvoiceForm(props) {
                             null
                         }
                     </div>
+                    <div className="form-group col-md">
+                        <label>Country</label>
+                        <input type="text" className="form-control"/>
+                        {
+                            (errors && errors.email) ?
+                            <p class="errorMessage">{errors.email}</p>
+                        :
+                        null
+                        }
+                    </div>
                 </div>
 
-                <div className="form-group">
-                    <label>Country</label>
-                    <input type="text" className="form-control"/>
-                    {
-                        (errors && errors.email) ?
-                        <p class="errorMessage">{errors.email}</p>
-                    :
-                    null
-                    }
-                </div>
 
                 <h2 className='nForm__header3'>Bill To</h2>
 
@@ -152,9 +152,7 @@ function NewInvoiceForm(props) {
                             null
                         }
                     </div>
-                </div>
-
-                <div className="form-group">
+                <div className="form-group col-md">
                     <label>Country</label>
                     <input type="text" className="form-control"/>
                     {
@@ -164,6 +162,8 @@ function NewInvoiceForm(props) {
                     null
                     }
                 </div>
+                </div>
+
 
                 <div className="form-group">
                     <label>Invoice Date</label>
@@ -255,10 +255,10 @@ function NewInvoiceForm(props) {
                 </form>
             </div>
             <div className="nForm__rectangle"> </div>
-            <div className="nForm__Padding nForm_row">
+            <div className="nForm__Padding nForm_row container">
                 <button className='btn btn-transparent nForm__discardButton '>Discard</button>
                 <button className='btn btn-dark nForm__saveButton '>Save as Draft</button>
-                <button className='btn btn-primary nForm__sendBUtton'>Save & Send</button>
+                <button className='btn btn-primary nForm__sendButton'>Save & Send</button>
             </div>
         </div>
     </>
