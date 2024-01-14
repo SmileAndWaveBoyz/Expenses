@@ -706,4 +706,15 @@ input[type=date]:focus:before {
   .container {
     max-width: 1100px;
   }
+  .nForm {
+    width: 46rem;
+    height: 100%;
+    top: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .nForm__Padding {
+    width: 38rem;
+    margin-left: 7rem;
+  }
 }/*# sourceMappingURL=styles.css.map */

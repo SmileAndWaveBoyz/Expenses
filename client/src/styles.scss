@@ -362,7 +362,6 @@ button{
 @media screen and (min-width: 1024px) {
     #header{
         margin-top: 4.87rem;
-        
     }
     
     .header__newButton{
@@ -783,5 +782,22 @@ input[type="date"]:before {
 @media screen and (min-width: 1290px) {
     .container{
         max-width: 1100px;
+    }
+
+    .nForm{
+        width: 46rem;
+        height: 100%;
+        top: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .nForm__Padding{
+        width: 38rem;
+        margin-left: 7rem;
+    }
+
+    .nForm_row {
+        // margin-bottom: 4rem;
     }
 }
