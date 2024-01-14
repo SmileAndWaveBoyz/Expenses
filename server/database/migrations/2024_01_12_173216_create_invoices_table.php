@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->date('createdAt');
-            $table->date('paymentDue');
+            $table->date('paymentDue')->nullable();
             $table->string('description');
             $table->integer('paymentTerms');
             $table->string('clientName');
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('clientAddress_city');
             $table->string('clientAddress_postCode');
             $table->string('clientAddress_country');
-            $table->decimal('total', 10, 2);
+            $table->decimal('total', 10, 2)->nullable();
         });
     }
 

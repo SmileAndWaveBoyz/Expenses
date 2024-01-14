@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('invoice_id')->constrained();
-            $table->string('name');
-            $table->integer('quantity');
-            $table->decimal('price', 10, 2);
-            $table->decimal('total', 10, 2);
+            $table->string('name')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->decimal('price', 10, 2)->nullable();
+            $table->decimal('total', 10, 2)->nullable();
             $table->timestamps();
         });
     }

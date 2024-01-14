@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->group(function(){
     });
     Route::post("/logout", [AuthController::class, "logout"]);
     Route::get('/invoices', [InvoiceController::class, 'index']);
-
+    Route::post('/newInvoice', [InvoiceController::class, 'store']);
 });
 
 

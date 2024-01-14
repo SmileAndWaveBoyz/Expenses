@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from "react-router-dom";
 import { useStateContext } from '../contexts/ContextProvider';
+import axiosClient from '../axios-client';
 
 function NewInvoiceForm(props) {
 
@@ -96,8 +97,24 @@ function NewInvoiceForm(props) {
             status: "pending",
             items: items
         }
+
         setErrors(null)
-        console.log(payload);
+
+        axiosClient.post('/newInvoice', payload)
+      .then(({data})=>{
+        console.log(data);
+
+      })
+      .catch((error) => {
+        const response = error. response
+        if (response && response.status === 422) {
+          if (response.data.errors) {
+            console.log("Error");
+            console.log(response.data.errors);
+            setErrors(response.data.errors)
+          } 
+        }
+      })
     }
 
   return (
