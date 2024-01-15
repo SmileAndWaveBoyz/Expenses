@@ -23,9 +23,9 @@ class Invoice extends Model
         'senderAddress_postCode',
         'senderAddress_street',
         'status',
-        'items.*.name',
-        'items.*.quantity',
-        'items.*.price',
+        'paymentDue',
+        'total',
+        'invoiceID',
     ];
 
     public function items()
@@ -33,4 +33,3 @@ class Invoice extends Model
         return $this->hasMany(Item::class);
     }
 }
-

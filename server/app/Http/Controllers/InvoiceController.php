@@ -28,6 +28,9 @@ class InvoiceController extends Controller
             'senderAddress_postCode' => 'required|string',
             'senderAddress_street' => 'required|string',
             'status' => 'required|string',
+            'items.*.name' => 'required|string',
+            'items.*.quantity' => 'required|integer',
+            'items.*.price' => 'required|numeric',
         ]);
 
 
@@ -39,14 +42,28 @@ class InvoiceController extends Controller
         $paymentDue = date('Y-m-d', strtotime($createdAt . ' + ' . $paymentTerms . ' days'));
         
         $validatedData['paymentDue'] = $paymentDue;
-        Log::info($validatedData);
+        $validatedData['total'] = 0;
+
+        foreach ($validatedData['items'] as $itemData) {
+            $validatedData['total'] += $itemData["price"] * $itemData["quantity"];
+
+        }
+
+        $invoiceID = $this->generateUniqueInvoiceID();
+        $validatedData['invoiceID'] = $invoiceID;
+        
+        
 
         // Create a new invoice
         $invoice = Invoice::create($validatedData);
 
-        Log::info($invoice);
+        // Log::info($invoice);
         
-
+        foreach ($validatedData['items'] as $itemData) {
+            $itemData["total"] = $itemData["price"] * $itemData["quantity"];
+            $item = new Item($itemData);
+            $invoice->items()->save($item);
+        }
 
         return response()->json(['message' => 'Invoice created successfully']);
     }
@@ -56,5 +73,28 @@ class InvoiceController extends Controller
         $invoices = Invoice::all();
 
         return response()->json(['invoices' => $invoices], 200);
+    }
+
+    private function generateUniqueInvoiceID()
+    {
+        $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $numbers = '0123456789';
+
+        $randomLetters = $letters[random_int(0, strlen($letters) - 1)] . $letters[random_int(0, strlen($letters) - 1)];
+        $randomNumbers = '';
+
+        // Generate four random numbers
+        for ($i = 0; $i < 4; $i++) {
+            $randomNumbers .= $numbers[random_int(0, strlen($numbers) - 1)];
+        }
+
+        $invoiceID = $randomLetters . $randomNumbers;
+
+        // Check if the generated invoiceID is unique, generate a new one if not
+        while (Invoice::where('invoiceID', $invoiceID)->exists()) {
+            $invoiceID = $this->generateUniqueInvoiceID();
+        }
+
+        return $invoiceID;
     }
 }

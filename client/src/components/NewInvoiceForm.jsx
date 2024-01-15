@@ -99,7 +99,7 @@ function NewInvoiceForm(props) {
         }
 
         setErrors(null)
-
+        console.log(payload);
         axiosClient.post('/newInvoice', payload)
       .then(({data})=>{
         console.log(data);

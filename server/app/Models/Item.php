@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Item extends Model
 {
     protected $fillable = [
-        'items.*.name',
-        'items.*.quantity',
-        'items.*.price',
+        'name',
+        'quantity',
+        'price',
+        "total",
     ];
 
     public function invoice()
