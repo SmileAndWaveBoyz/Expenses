@@ -110,12 +110,14 @@ function NewInvoiceForm(props) {
         if (response && response.status === 422) {
           if (response.data.errors) {
             console.log("Error");
-            console.log(response.data.errors);
+            // console.log(response.data.errors);
             setErrors(response.data.errors)
           } 
         }
       })
     }
+
+    
 
   return (
     <>
@@ -131,8 +133,8 @@ function NewInvoiceForm(props) {
                     <label>Street address</label>
                     <input type="text" className="form-control" ref={senderAddressStreetRef} autoFocus/>
                     {
-                    (errors && errors.email) ?
-                    <p class="errorMessage">{errors.email}</p>
+                    (errors && errors.senderAddress_street) ?
+                    <p class="errorMessage">{errors.senderAddress_street}</p>
                     :
                     null
                     }
@@ -142,8 +144,8 @@ function NewInvoiceForm(props) {
                         <label>City</label>
                         <input type="text" className="form-control" ref={senderAddressCityRef}/>
                         {
-                        (errors && errors.password) ?
-                        <p class="errorMessage">{errors.password}</p>
+                        (errors && errors.senderAddress_city) ?
+                        <p class="errorMessage">{errors.senderAddress_city}</p>
                         :
                         null
                     }
@@ -152,8 +154,8 @@ function NewInvoiceForm(props) {
                         <label>Post Code</label>
                         <input ref={senderAddressPostCodeRef} type="text" className="form-control" />
                         {
-                            (errors && errors.password) ?
-                            <p class="errorMessage">{errors.password}</p>
+                            (errors && errors.senderAddress_postCode) ?
+                            <p class="errorMessage">{errors.senderAddress_postCode}</p>
                             :
                             null
                         }
@@ -162,8 +164,8 @@ function NewInvoiceForm(props) {
                         <label>Country</label>
                         <input ref={senderAddressCountryRef} type="text" className="form-control"/>
                         {
-                            (errors && errors.email) ?
-                            <p class="errorMessage">{errors.email}</p>
+                            (errors && errors.senderAddress_country) ?
+                            <p class="errorMessage">{errors.senderAddress_country}</p>
                         :
                         null
                         }
@@ -177,8 +179,8 @@ function NewInvoiceForm(props) {
                     <label>Client's name</label>
                     <input ref={clientsNameRef} type="text" className="form-control"/>
                     {
-                        (errors && errors.email) ?
-                        <p class="errorMessage">{errors.email}</p>
+                        (errors && errors.clientName) ?
+                        <p class="errorMessage">{errors.clientName}</p>
                         :
                         null
                     }
@@ -188,8 +190,8 @@ function NewInvoiceForm(props) {
                     <label>Client's Email</label>
                     <input ref={clientsEmailRef} type="email" className="form-control"/>
                     {
-                    (errors && errors.email) ?
-                    <p class="errorMessage">{errors.email}</p>
+                    (errors && errors.clientEmail) ?
+                    <p class="errorMessage">{errors.clientEmail}</p>
                     :
                     null
                     }
@@ -199,8 +201,8 @@ function NewInvoiceForm(props) {
                     <label>Street Address</label>
                     <input ref={clientAddressStreetRef} type="text" className="form-control"/>
                     {
-                    (errors && errors.email) ?
-                    <p class="errorMessage">{errors.email}</p>
+                    (errors && errors.clientAddress_street) ?
+                    <p class="errorMessage">{errors.clientAddress_street}</p>
                     :
                     null
                     }
@@ -211,8 +213,8 @@ function NewInvoiceForm(props) {
                         <label>City</label>
                         <input  type="text" className="form-control" ref={clientAddressCityRef}/>
                         {
-                        (errors && errors.password) ?
-                        <p class="errorMessage">{errors.password}</p>
+                        (errors && errors.clientAddress_city) ?
+                        <p class="errorMessage">{errors.clientAddress_city}</p>
                         :
                         null
                     }
@@ -221,8 +223,8 @@ function NewInvoiceForm(props) {
                         <label>Post Code</label>
                         <input ref={clientAddressPostCodeRef} type="text" className="form-control" />
                         {
-                            (errors && errors.password) ?
-                            <p class="errorMessage">{errors.password}</p>
+                            (errors && errors.clientAddress_postCode) ?
+                            <p class="errorMessage">{errors.clientAddress_postCode}</p>
                             :
                             null
                         }
@@ -231,8 +233,8 @@ function NewInvoiceForm(props) {
                     <label>Country</label>
                     <input ref={clientAddressCountryRef} type="text" className="form-control"/>
                     {
-                    (errors && errors.email) ?
-                    <p class="errorMessage">{errors.email}</p>
+                    (errors && errors.clientAddress_country) ?
+                    <p class="errorMessage">{errors.clientAddress_country}</p>
                     :
                     null
                     }
@@ -244,8 +246,8 @@ function NewInvoiceForm(props) {
                     <label>Invoice Date</label>
                     <input ref={invoiceDateRef} type="date" className="form-control"/>
                     {
-                        (errors && errors.email) ?
-                        <p class="errorMessage">{errors.email}</p>
+                        (errors && errors.createdAt) ?
+                        <p class="errorMessage">{errors.createdAt}</p>
                         :
                         null
                     }
@@ -260,8 +262,8 @@ function NewInvoiceForm(props) {
                         <option value="30">Net 30 Day</option>
                     </select>
                     {
-                    (errors && errors.email) ?
-                    <p class="errorMessage">{errors.email}</p>
+                    (errors && errors.paymentTerms) ?
+                    <p class="errorMessage">{errors.paymentTerms}</p>
                     :
                     null
                     }
@@ -271,8 +273,8 @@ function NewInvoiceForm(props) {
                     <label>Project Description</label>
                     <input ref={projectDescriptionRef} type="text" className="form-control"/>
                     {
-                        (errors && errors.email) ?
-                        <p class="errorMessage">{errors.email}</p>
+                        (errors && errors.description) ?
+                        <p class="errorMessage">{errors.description}</p>
                         :
                         null
                     }
@@ -287,10 +289,12 @@ function NewInvoiceForm(props) {
                                     <label>Item Name</label>
                                     <input type="text" className="form-control" value={item.name} onChange={(e) => handleItemChange(index, 'name', e.target.value)}/>
                                     {
-                                        (errors && errors.email) ?
-                                        <p class="errorMessage">{errors.email}</p>
-                                        :
-                                        null
+                                    (errors && !item.name) ? 
+                                    
+                                    <p className="errorMessage">Required</p>
+                                    
+                                    : null
+
                                     }
                                 </div>
 
@@ -299,20 +303,24 @@ function NewInvoiceForm(props) {
                                         <label>Qty.</label>
                                         <input type="text" className="form-control" value={item.quantity} onChange={(e) => handleItemChange(index, 'quantity', e.target.value)}/>
                                         {
-                                            (errors && errors.password) ?
-                                            <p class="errorMessage">{errors.password}</p>
-                                            :
-                                            null
+                                        (errors && !item.quantity) ? 
+                                        
+                                        <p className="errorMessage">Required</p>
+                                        
+                                        : null
+
                                         }
                                     </div>
                                     <div className="form-group col">
                                         <label>Price</label>
                                         <input type="text" className="form-control" value={item.price} onChange={(e) => handleItemChange(index, 'price', e.target.value)}/>
                                         {
-                                            (errors && errors.password) ?
-                                            <p class="errorMessage">{errors.password}</p>
-                                            :
-                                            null
+                                        (errors && !item.price) ? 
+                                        
+                                        <p className="errorMessage">Required</p>
+                                        
+                                        : null
+
                                         }
                                     </div>
                                     <div className="form-group col">
