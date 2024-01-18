@@ -102,8 +102,9 @@ function NewInvoiceForm(props) {
         console.log(payload);
         axiosClient.post('/newInvoice', payload)
       .then(({data})=>{
-        console.log(data);
+        console.log(data)
         setNewForm(false)
+        refreshForm()
         if (refresh === false) {
             setRefresh(true)
         } else{
@@ -121,6 +122,24 @@ function NewInvoiceForm(props) {
           } 
         }
       })
+    }
+
+    function refreshForm() {
+        clientAddressCityRef.current.value = ""
+        clientAddressCountryRef.current.value = ""
+        clientAddressPostCodeRef.current.value = ""
+        clientAddressStreetRef.current.value = ""
+        clientsEmailRef.current.value = ""
+        clientsNameRef.current.value = ""
+        invoiceDateRef.current.value = ""
+        projectDescriptionRef.current.value = ""
+        paymentTermsRef.current.value = ""
+        senderAddressCityRef.current.value = ""
+        senderAddressCountryRef.current.value = ""
+        senderAddressPostCodeRef.current.value = ""
+        senderAddressStreetRef.current.value = ""
+
+        setItems([{name: "", quantity: "", price: ""}])
     }
 
     

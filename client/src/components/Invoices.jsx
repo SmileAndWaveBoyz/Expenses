@@ -33,15 +33,19 @@ function Invoices() {
 
     fetchInvoices();
   }, [refresh]);
+
+  function viewInvoice(id) {
+    console.log(id);
+  }
   
   return (
-      <div id='invoices'> 
+      <main id='invoices'> 
       {
         (data.length > 0) ?
 
         data.map((d, index)=>{
           return(
-                <main key={index} className='container invoices'>
+                <div key={index} className='container invoices' onClick={()=>viewInvoice(d.id)}>
                     <section className='invoices__row'>
                       <div className="invoices_left">
                         <h3 className='invoices__id'><h3 className='invoices__idH'>#</h3>{d.invoiceID}</h3> 
@@ -57,7 +61,7 @@ function Invoices() {
                         <svg className='mobileNoDisplay invoices__arrow' xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none"> <path d="M1 1L5 5L1 9" stroke="#7C5DFA" stroke-width="2"/></svg>
                       </div>
                     </section>
-                </main>
+                </div>
 
                 )
         })
@@ -68,7 +72,7 @@ function Invoices() {
             <p className='empty__paragraph'>  Create an invoice by clicking the <br></br><strong>New Invoice</strong> button and get started</p> 
         </main>
       }
-      </div>
+      </main>
   )
 }
 
