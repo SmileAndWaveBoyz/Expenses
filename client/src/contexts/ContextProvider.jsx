@@ -4,9 +4,11 @@ const StateContext = createContext({
     user: null,
     token: null,
     newForm: 0,
+    refresh: false,
     setUser: () => {},
     setToken: () => {},
-    setNewForm: () =>{}
+    setNewForm: () =>{},
+    setRefresh: () => {}
 })
 
 export const ContextProvider = ({children})=>{
@@ -24,8 +26,9 @@ export const ContextProvider = ({children})=>{
     };
 
     const [newForm, setNewForm] = useState(false)
+    const [refresh, setRefresh] = useState(false)
 
-    return  <StateContext.Provider value={{user, token, newForm, setUser, setToken, setNewForm}}>{children}</StateContext.Provider>
+    return  <StateContext.Provider value={{user, token, newForm, refresh, setUser, setToken, setNewForm, setRefresh}}>{children}</StateContext.Provider>
 }
 
 export const useStateContext = () => {

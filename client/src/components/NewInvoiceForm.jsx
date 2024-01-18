@@ -21,7 +21,7 @@ function NewInvoiceForm(props) {
     const projectDescriptionRef = useRef(null)
     
 
-    const { newForm, setNewForm} = useStateContext()
+    const { newForm, setNewForm, refresh, setRefresh} = useStateContext()
     const [newFormPosition, setNewFormPosition] = useState(window.innerWidth)  
 
     const [items, setItems] = useState([
@@ -104,6 +104,12 @@ function NewInvoiceForm(props) {
       .then(({data})=>{
         console.log(data);
         setNewForm(false)
+        if (refresh === false) {
+            setRefresh(true)
+        } else{
+            setRefresh(false)
+        }
+        
       })
       .catch((error) => {
         const response = error. response

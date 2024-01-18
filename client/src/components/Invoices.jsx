@@ -3,7 +3,7 @@ import jsonData from './data.json';
 import { useStateContext } from '../contexts/ContextProvider';
 
 function Invoices() {
-  const { token} = useStateContext()
+  const { token, refresh} = useStateContext()
 
   const [data, setData] = useState([])
   useEffect(() => {
@@ -32,7 +32,7 @@ function Invoices() {
     };
 
     fetchInvoices();
-  }, []);
+  }, [refresh]);
   
   return (
       <div id='invoices'> 
