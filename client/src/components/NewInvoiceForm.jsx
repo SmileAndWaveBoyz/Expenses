@@ -103,7 +103,7 @@ function NewInvoiceForm(props) {
         axiosClient.post('/newInvoice', payload)
       .then(({data})=>{
         console.log(data);
-
+        setNewForm(false)
       })
       .catch((error) => {
         const response = error. response
@@ -121,6 +121,7 @@ function NewInvoiceForm(props) {
 
   return (
     <>
+        <div className="blackBox" style={newForm ? {display: "block"} : {display: "none"}} onClick={goBack}></div>
         <div className='nForm' style={{transform: `translateX(-${newFormPosition}px)`}}>
             <div className="nForm__Padding container">
                 <button onClick={goBack} className='nForm__backButton'> <svg className='nForm__backButtonSVG'  width="6" height="11" viewBox="0 0 6 11" fill="none">  <path d="M4.3418 0.885742L0.113895 5.11364L4.3418 9.34155" stroke="#7C5DFA" stroke-width="2"/></svg>Go back</button>

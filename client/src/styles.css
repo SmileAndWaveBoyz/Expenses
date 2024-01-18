@@ -536,6 +536,16 @@ button:focus {
   text-align: center;
 }
 
+.blackBox {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.48);
+  z-index: 3;
+  cursor: pointer;
+}
+
 .nForm {
   height: 100%;
   width: 100%;
