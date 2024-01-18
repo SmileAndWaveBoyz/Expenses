@@ -10,7 +10,6 @@ function Users() {
   return (
     <>
       <Navbar/>
-      <Header />
       <NewInvoiceForm/>
       <Invoices/>
     </>

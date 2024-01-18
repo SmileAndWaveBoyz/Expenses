@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import jsonData from './data.json';
 import { useStateContext } from '../contexts/ContextProvider';
+import Header from '../components/Header';
 
 function Invoices() {
-  const { token, refresh} = useStateContext()
+  const { token, refresh, editPage, setEditPage} = useStateContext()
+  const [editPagePosition, setEditPagePosition] = useState(window.innerWidth)
 
   const [data, setData] = useState([])
   useEffect(() => {
@@ -34,15 +36,47 @@ function Invoices() {
     fetchInvoices();
   }, [refresh]);
 
+  useEffect(() => {
+
+    if (editPage) {
+      setEditPagePosition(0)
+    } else{
+      setEditPagePosition(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
+    function handleResize() {
+      if (editPage) {
+        setEditPagePosition(0)
+        } else{
+          setEditPagePosition(window.innerWidth)
+        }
+    }
+  
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    };
+
+  }, [editPage])
+
   function viewInvoice(id) {
-    console.log(id);
+    console.log(id)
+    setEditPage(true)
+  }
+
+  function viewInvoiceBack() {
+    setEditPage(false)
   }
   
   return (
+    <div className='home'>
+      <div className="invoicePage">
+
       <main id='invoices'> 
+      <Header/>
       {
         (data.length > 0) ?
-
+        
         data.map((d, index)=>{
           return(
                 <div key={index} className='container invoices' onClick={()=>viewInvoice(d.id)}>
@@ -73,6 +107,22 @@ function Invoices() {
         </main>
       }
       </main>
+      </div>
+
+      <div className="editPage" style={{transform: `translateX(-${editPagePosition}px)`}}>
+        <div className="container">
+          <button onClick={viewInvoiceBack} className='nForm__backButton'><svg className='nForm__backButtonSVG'  width="6" height="11" viewBox="0 0 6 11" fill="none">  <path d="M4.3418 0.88623L0.113895 5.11413L4.3418 9.34203" stroke="#9277FF" stroke-width="2"/></svg>Go back</button>
+        
+          <header className='editPage__header'>
+            <p className='editPage__status'>Status</p>
+            <div className={`invoices__status pending`}><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"> <circle className={`invoices__status-circle pending`} cx="4" cy="4" r="4" /></svg> Pending</div>
+          </header>
+          <div className="editPage__body" >
+
+          </div>
+        </div>
+      </div>
+  </div>
   )
 }
 

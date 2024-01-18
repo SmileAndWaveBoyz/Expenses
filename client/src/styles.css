@@ -729,4 +729,44 @@ input[type=date]:focus:before {
     width: 38rem;
     margin-left: 7rem;
   }
+}
+.home {
+  position: relative;
+}
+
+.editPage {
+  background: rgb(248, 248, 251);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 4;
+  transition: all 0.25s;
+}
+
+.editPage__header {
+  border-radius: 0.5rem;
+  background: #FFF;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+  padding: 1.5rem;
+  height: 5.6875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.editPage__status {
+  color: #858BB2;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 0.9375rem; /* 115.385% */
+  letter-spacing: -0.00625rem;
+  margin: 0;
+}
+
+.editPage__body {
+  border-radius: 0.5rem;
+  background: #FFF;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+  height: 43.4375rem;
 }/*# sourceMappingURL=styles.css.map */
