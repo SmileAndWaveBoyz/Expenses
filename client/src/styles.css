@@ -815,9 +815,48 @@ input[type=date]:focus:before {
   margin-bottom: 0.15rem;
 }
 
+.editPage__infoHeading {
+  color: rgb(126, 136, 195);
+  font-size: 0.8125rem;
+  font-style: normal;
+  line-height: 0.9375rem; /* 115.385% */
+  letter-spacing: -0.00625rem;
+  margin-bottom: 0.81rem;
+}
+
+.editPage__mid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.editPage__dateHeading {
+  color: rgb(12, 14, 22);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.25rem; /* 133.333% */
+  letter-spacing: -0.01563rem;
+  margin-bottom: 1.94rem;
+}
+
+.editPage__dateHeading.name {
+  margin-bottom: 0.44rem;
+}
+
+.editPage_midLow {
+  margin-bottom: 2.38rem;
+  width: 50%;
+}
+
 @media screen and (min-width: 768px) {
   .nForm__backButton.edit {
     margin-top: 8.06rem;
+  }
+  .editPage__mid {
+    width: 50%;
+  }
+  .editPage__desktopMid {
+    display: flex;
   }
 }
 @media screen and (min-width: 1024px) {

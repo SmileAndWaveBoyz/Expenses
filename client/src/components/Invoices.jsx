@@ -129,6 +129,32 @@ function Invoices() {
               </div>
             </div>
 
+            <div className="editPage__desktopMid">
+              <div className="editPage__mid">
+                <div className="editPage__midLeft">
+                  <p className='editPage__infoHeading'>Invoice Date</p>
+                  <p className='editPage__dateHeading'>21 Aug 2021</p>
+                  <p className='editPage__infoHeading'>Payment Due</p>
+                  <p className='editPage__dateHeading second'>20 Sep 2021</p>
+                </div>
+                <div className="editPage__midRight">
+                  <p className='editPage__infoHeading'>Bill To</p>
+                  <p className='editPage__dateHeading name'>Alex Grim</p>
+                  <div className="editPage__addressContainer">
+                    <p className='editPage__addressPar'>84 Church Way Bradfo</p>
+                    <p className='editPage__addressPar'>Bradford</p>
+                    <p className='editPage__addressPar'>BS22 8LF</p>
+                    <p className='editPage__addressPar'>United Kingdom</p>
+                </div>
+                </div>
+              </div>
+
+              <div className="editPage_midLow">
+                <p className='editPage__infoHeading'>Sent to</p>
+                <p className='editPage__dateHeading'>alexgrim@mail.com</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
