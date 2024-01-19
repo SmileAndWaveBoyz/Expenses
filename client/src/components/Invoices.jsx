@@ -118,6 +118,16 @@ function Invoices() {
             <div className={`invoices__status pending`}><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"> <circle className={`invoices__status-circle pending`} cx="4" cy="4" r="4" /></svg> Pending</div>
           </header>
           <div className="editPage__body" >
+            <div className="editPage__top">
+              <h3 className='editPage__id'><h3 className='invoices__idH'>#</h3>XM9141</h3>
+              <p className='editPage__description'>Graphic Design</p>
+              <div className="editPage__addressContainer">
+                <p className='editPage__addressPar'>19 Union Terrace</p>
+                <p className='editPage__addressPar'>London</p>
+                <p className='editPage__addressPar'>BS22 8LF</p>
+                <p className='editPage__addressPar'>United Kingdom</p>
+              </div>
+            </div>
 
           </div>
         </div>
