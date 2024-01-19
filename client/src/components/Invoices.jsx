@@ -111,7 +111,7 @@ function Invoices() {
 
       <div className="editPage" style={{transform: `translateX(-${editPagePosition}px)`}}>
         <div className="container">
-          <button onClick={viewInvoiceBack} className='nForm__backButton'><svg className='nForm__backButtonSVG'  width="6" height="11" viewBox="0 0 6 11" fill="none">  <path d="M4.3418 0.88623L0.113895 5.11413L4.3418 9.34203" stroke="#9277FF" stroke-width="2"/></svg>Go back</button>
+          <button onClick={viewInvoiceBack} className='nForm__backButton edit'><svg className='nForm__backButtonSVG'  width="6" height="11" viewBox="0 0 6 11" fill="none">  <path d="M4.3418 0.88623L0.113895 5.11413L4.3418 9.34203" stroke="#9277FF" stroke-width="2"/></svg>Go back</button>
         
           <header className='editPage__header'>
             <p className='editPage__status'>Status</p>
