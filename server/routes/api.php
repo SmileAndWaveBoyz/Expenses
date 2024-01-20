@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function(){
     });
     Route::post("/logout", [AuthController::class, "logout"]);
     Route::get('/invoices', [InvoiceController::class, 'index']);
+    Route::get('/items', [ItemController::class, 'index']);
     Route::post('/newInvoice', [InvoiceController::class, 'store']);
 });
 

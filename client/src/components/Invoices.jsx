@@ -6,8 +6,10 @@ import Header from '../components/Header';
 function Invoices() {
   const { token, refresh, editPage, setEditPage} = useStateContext()
   const [editPagePosition, setEditPagePosition] = useState(window.innerWidth)
+  const [selectedID, setSelectedID] = useState(0)
 
   const [data, setData] = useState([])
+  const [itemData, setItemData] = useState([])
   useEffect(() => {
     
 
@@ -33,7 +35,32 @@ function Invoices() {
       }
     };
 
-    fetchInvoices();
+    fetchInvoices()
+
+    const fetchItems = async () => {
+      try {
+        const response = await fetch('http://192.168.1.96:8000/api/items', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setItemData(data.items)
+        console.log('Items:', data.items);
+      } catch (error) {
+        console.error('Error fetching items:', error.message);
+      }
+    };
+
+    fetchItems()
+
   }, [refresh]);
 
   useEffect(() => {
@@ -60,8 +87,19 @@ function Invoices() {
   }, [editPage])
 
   function viewInvoice(id) {
-    console.log(id)
+    setSelectedID(id)
     setEditPage(true)
+
+    let selectedItems = []
+
+    for (let i = 0; i < itemData.length; i++) {
+      if (itemData[i].id === data[id].id) {
+        selectedItems.push(itemData[i])
+      }
+    }
+
+    console.log(selectedItems);
+
   }
 
   function viewInvoiceBack() {
@@ -79,7 +117,7 @@ function Invoices() {
         
         data.map((d, index)=>{
           return(
-                <div key={index} className='container invoices' onClick={()=>viewInvoice(d.id)}>
+                <div key={index} className='container invoices' onClick={()=>viewInvoice(index)}>
                     <section className='invoices__row'>
                       <div className="invoices_left">
                         <h3 className='invoices__id'><h3 className='invoices__idH'>#</h3>{d.invoiceID}</h3> 
@@ -103,7 +141,7 @@ function Invoices() {
         <main className='container empty'>
             <img className='empty__image' src="./assets/illustration-empty.svg" alt="" />
             <h2 className='empty__heading'>There is nothing here</h2>
-            <p className='empty__paragraph'>  Create an invoice by clicking the <br></br><strong>New Invoice</strong> button and get started</p> 
+            <p className='empty__paragraph'>Create an invoice by clicking the <br></br><strong>New Invoice</strong> button and get started</p> 
         </main>
       }
       </main>
@@ -123,17 +161,20 @@ function Invoices() {
             </div>
           </header>
 
-          <div className="editPage__body" >
+          {
+            (data.length > 0) ?
+
+            <div className="editPage__body" >
             <div className="editPage__top">
               <div className="editPage__idContainer">
-                <h3 className='editPage__id'><h3 className='invoices__idH'>#</h3>XM9141</h3>
+                <h3 className='editPage__id'><h3 className='invoices__idH'>#</h3>{data[selectedID].invoiceID}</h3>
                 <p className='editPage__description'>Graphic Design</p>
               </div>
               <div className="editPage__addressContainer">
-                <p className='editPage__addressPar'>19 Union Terrace</p>
-                <p className='editPage__addressPar'>London</p>
-                <p className='editPage__addressPar'>BS22 8LF</p>
-                <p className='editPage__addressPar'>United Kingdom</p>
+                <p className='editPage__addressPar'>{data[selectedID].senderAddress_street}</p>
+                <p className='editPage__addressPar'>{data[selectedID].senderAddress_city}</p>
+                <p className='editPage__addressPar'>{data[selectedID].senderAddress_postCode}</p>
+                <p className='editPage__addressPar'>{data[selectedID].senderAddress_country}</p>
               </div>
             </div>
 
@@ -141,18 +182,18 @@ function Invoices() {
               <div className="editPage__mid">
                 <div className="editPage__midLeft">
                   <p className='editPage__infoHeading'>Invoice Date</p>
-                  <p className='editPage__dateHeading'>21 Aug 2021</p>
+                  <p className='editPage__dateHeading'>{data[selectedID].createdAt}</p>
                   <p className='editPage__infoHeading'>Payment Due</p>
-                  <p className='editPage__dateHeading second'>20 Sep 2021</p>
+                  <p className='editPage__dateHeading second'>{data[selectedID].paymentDue}</p>
                 </div>
                 <div className="editPage__midRight">
                   <p className='editPage__infoHeading'>Bill To</p>
-                  <p className='editPage__dateHeading name'>Alex Grim</p>
+                  <p className='editPage__dateHeading name'>{data[selectedID].clientName}</p>
                   <div className="editPage__addressContainer">
-                    <p className='editPage__addressPar'>84 Church Way Bradfo</p>
-                    <p className='editPage__addressPar'>Bradford</p>
-                    <p className='editPage__addressPar'>BS22 8LF</p>
-                    <p className='editPage__addressPar'>United Kingdom</p>
+                    <p className='editPage__addressPar'>{data[selectedID].clientAddress_street}</p>
+                    <p className='editPage__addressPar'>{data[selectedID].clientAddress_city}</p>
+                    <p className='editPage__addressPar'>{data[selectedID].clientAddress_postCode}</p>
+                    <p className='editPage__addressPar'>{data[selectedID].clientAddress_country}</p>
                 </div>
                 </div>
               </div>
@@ -160,7 +201,7 @@ function Invoices() {
               <div className="editPage_midLow">
                 <span>
                 <p className='editPage__infoHeading'>Sent to</p>
-                <p className='editPage__dateHeading email'>alexgrim@mail.com</p>
+                <p className='editPage__dateHeading email'>{data[selectedID].clientEmail}</p>
                 </span>
               </div>
             </div>
@@ -192,6 +233,9 @@ function Invoices() {
               </div>
             </div>
           </div>
+          :
+          null
+          }
 
           <footer className='editPage__footer '>
             <div className="container eFooter">
