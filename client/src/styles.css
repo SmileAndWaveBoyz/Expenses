@@ -748,6 +748,7 @@ input[type=date]:focus:before {
   top: 0;
   z-index: 4;
   transition: all 0.25s;
+  overflow-y: scroll;
 }
 
 .nForm__backButton.edit {
@@ -843,9 +844,87 @@ input[type=date]:focus:before {
   margin-bottom: 0.44rem;
 }
 
+.editPage__dateHeading.email {
+  margin-bottom: 2.37rem;
+}
+
 .editPage_midLow {
   margin-bottom: 2.38rem;
   width: 50%;
+}
+
+.editPage__bottom {
+  margin-bottom: 1.5rem;
+}
+
+.editPage__itemContainer {
+  padding: 1.5rem 1.5rem 1.44rem 1.5rem;
+  padding-bottom: 0.01rem;
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
+  background: #F9FAFE;
+}
+
+.editPage__quantityContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.editPage__quantityHeading {
+  color: rgb(12, 14, 22);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  margin-bottom: 0.5rem;
+}
+
+.editPage_quantityPar {
+  color: rgb(126, 136, 195);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  margin-bottom: 0;
+}
+
+.editPage__quantityContainerAmount {
+  color: rgb(12, 14, 22);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 0.9375rem; /* 100% */
+  letter-spacing: -0.01563rem;
+  margin-top: 0.75rem;
+}
+
+.editPage__totalContainer {
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  background: #373B53;
+  height: 5rem;
+  padding: 2rem 1.5rem 1.88rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editPage__totalHeading {
+  color: #FFF;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.125rem; /* 138.462% */
+  letter-spacing: -0.00625rem;
+  margin-bottom: 0;
+}
+
+.editPage__totalAmount {
+  color: #FFF;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2rem; /* 133.333% */
+  letter-spacing: -0.03125rem;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 768px) {

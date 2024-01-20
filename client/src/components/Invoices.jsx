@@ -151,10 +151,36 @@ function Invoices() {
 
               <div className="editPage_midLow">
                 <p className='editPage__infoHeading'>Sent to</p>
-                <p className='editPage__dateHeading'>alexgrim@mail.com</p>
+                <p className='editPage__dateHeading email'>alexgrim@mail.com</p>
               </div>
             </div>
 
+            <div className="editPage__bottom">
+              <div className="editPage__itemContainer">
+                <div className="editPage__quantityContainer">
+                  <div className="editPage__quantityContainerLeft">
+                    <h3 className='editPage__quantityHeading'>Banner Design</h3>
+                    <p className='editPage_quantityPar'>1 x £ 156.00</p>
+                  </div>
+                  <div className="editPage__quantityContainerRight">
+                    <p className='editPage__quantityContainerAmount'>£ 156.00</p>
+                  </div>
+                </div>
+                <div className="editPage__quantityContainer">
+                  <div className="editPage__quantityContainerLeft">
+                    <h3 className='editPage__quantityHeading'>Banner Design</h3>
+                    <p className='editPage_quantityPar'>1 x £ 156.00</p>
+                  </div>
+                  <div className="editPage__quantityContainerRight">
+                    <p className='editPage__quantityContainerAmount'>£ 156.00</p>
+                  </div>
+                </div>
+              </div>
+              <div className="editPage__totalContainer">
+                <p className="editPage__totalHeading">Grand Total</p>
+                <p className='editPage__totalAmount'>£ 556.00</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
