@@ -94,6 +94,13 @@ button{
 
 .btn-primary{
     background-color: $blue1;
+    color: #FFF;
+    text-align: center;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.9375rem; /* 100% */
+    letter-spacing: -0.01563rem;
 
     &:hover {
         background-color: $blue2;
@@ -102,6 +109,11 @@ button{
 
 .btn-red{
     background-color: $red1;
+    color: #FFF;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 0.9375rem; /* 100% */
+    letter-spacing: -0.01563rem;
 
     &:hover {
         background-color: $red2;
@@ -111,6 +123,10 @@ button{
 .btn-transparent{
     background: rgb(0, 0, 0, 0.1);
     color: $grey2;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 0.9375rem; /* 100% */
+    letter-spacing: -0.01563rem;
 
     &:hover {
         background: rgb(0, 0, 0, 0.2);
@@ -251,6 +267,7 @@ button{
     margin-bottom: 2rem;
     z-index: 0;
     margin-top: 6.75rem;
+    z-index: 1;
 }
 
 .form-select{
@@ -276,10 +293,6 @@ button{
     height: 100%;
 }
 
-.inputContainer{
-    position: absolute;
-    top: 4rem;
-}
 
 .header__filterButton{
     margin-right: 1.61rem;
@@ -294,7 +307,7 @@ button{
     margin-left: 0.75rem;
     transform: rotateX(180deg);
     transition: transform 0.5s;
-
+    
     &:hover{
         transform: rotateX(0);
     }
@@ -312,6 +325,11 @@ button{
     display: none;
 }
 
+.inputContainer{
+    position: absolute;
+    top: 4rem;
+}
+
 .inputContainer__form{
     display: flex;
     justify-content: center;
@@ -319,14 +337,13 @@ button{
     border-radius: 0.5rem;
     background: #FFF;
     box-shadow: 0px 10px 20px 0px rgba(72, 84, 159, 0.25);
-    // width: 12rem;
-    // height: 8rem;
     padding: 1.5rem;
     padding-bottom: 0.1rem;
 }
 
 .form-check{
     margin-bottom: 1rem;
+    
 }
 
 .form-check-label{
@@ -394,6 +411,8 @@ button{
     justify-content: space-around;
     height: 8.375rem;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 0;
 }
 
 .invoices__id{
@@ -617,6 +636,7 @@ button{
     background-color: rgb(0, 0, 0, 0.48);
     z-index: 3;
     cursor: pointer;
+    overflow: none;
 }
 .nForm{
     height: 100%;
@@ -627,6 +647,7 @@ button{
     transition: transform 0.25s;
     z-index: 4;
     background-color: white;
+    overflow-y: scroll;
 }
 
 .nForm__Padding{
@@ -802,7 +823,7 @@ input[type="date"]:before {
 
     .nForm{
         width: 46rem;
-        height: 100%;
+        height: 100vh;
         top: 0;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -870,6 +891,7 @@ input[type="date"]:before {
     height: 43.4375rem;
     padding: 1.5rem;
     padding-top: 1.56rem;
+    margin-bottom: 3.5rem;
 }
 
 .editPage__id{
@@ -1014,6 +1036,35 @@ input[type="date"]:before {
     margin-bottom: 0;
 }
 
+.editPage__footer{
+    background: #FFF;
+    box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
+    height: 5.6875rem;
+    width: 100vw;
+    padding: 1.31rem 1.5rem 1.38rem 1.5rem;
+    position: absolute;
+    left: 0;
+
+}
+
+.container.eFooter{
+    justify-content: space-between;
+    align-items: center;
+    display: flex; 
+}
+
+.btn-transparent.edit{
+    width: 4.5625rem;
+}
+
+.btn-red.delete{
+    width: 5.5625rem;
+}
+
+.editPage__headerButtons{
+    display: none;
+}
+
 @media screen and (min-width: 768px) {
     .nForm__backButton.edit{
         margin-top: 8.06rem;
@@ -1026,6 +1077,51 @@ input[type="date"]:before {
     .editPage__desktopMid{
         display: flex;
     }
+
+    .editPage__body{
+        height: 37.625rem;
+        padding: 2.13rem 2rem 2rem 2rem;
+    }
+
+    .editPage__top{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .editPage__footer{
+        display: none;
+    }
+
+    .editPage_midLow{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+    }
+
+    .editPage__headerButtons{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-transparent.edit{
+        margin-right: 0.5rem;
+    }
+    
+    .btn-red.delete{
+        margin-right: 0.5rem;
+    }
+
+    .btn-primary.paid{
+        width: 8.1875rem;
+    }
+
+    .invoices__status{
+        margin-left: auto;
+        margin-right: 1.25rem;
+    }
+
 }
 
 @media screen and (min-width: 1024px) {

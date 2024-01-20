@@ -116,11 +116,19 @@ function Invoices() {
           <header className='editPage__header'>
             <p className='editPage__status'>Status</p>
             <div className={`invoices__status pending`}><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"> <circle className={`invoices__status-circle pending`} cx="4" cy="4" r="4" /></svg> Pending</div>
+            <div className="editPage__headerButtons">
+              <button className='btn btn-transparent edit'>Edit</button>
+              <button className='btn btn-red delete'>Delete</button>
+              <button className='btn btn-primary paid'>Mark as Paid</button>
+            </div>
           </header>
+
           <div className="editPage__body" >
             <div className="editPage__top">
-              <h3 className='editPage__id'><h3 className='invoices__idH'>#</h3>XM9141</h3>
-              <p className='editPage__description'>Graphic Design</p>
+              <div className="editPage__idContainer">
+                <h3 className='editPage__id'><h3 className='invoices__idH'>#</h3>XM9141</h3>
+                <p className='editPage__description'>Graphic Design</p>
+              </div>
               <div className="editPage__addressContainer">
                 <p className='editPage__addressPar'>19 Union Terrace</p>
                 <p className='editPage__addressPar'>London</p>
@@ -150,8 +158,10 @@ function Invoices() {
               </div>
 
               <div className="editPage_midLow">
+                <span>
                 <p className='editPage__infoHeading'>Sent to</p>
                 <p className='editPage__dateHeading email'>alexgrim@mail.com</p>
+                </span>
               </div>
             </div>
 
@@ -182,6 +192,14 @@ function Invoices() {
               </div>
             </div>
           </div>
+
+          <footer className='editPage__footer '>
+            <div className="container eFooter">
+            <button className='btn btn-transparent edit'>Edit</button>
+            <button className='btn btn-red delete'>Delete</button>
+            <button className='btn btn-primary paid'>Mark as Paid</button>
+            </div>
+          </footer>
         </div>
       </div>
   </div>
