@@ -8,6 +8,8 @@ const StateContext = createContext({
     editPage: false,
     listDisplay: "none",
     arrowRotate: 180,
+    updateForm: 0,
+    setUpdateForm: () => {},
     setUser: () => {},
     setToken: () => {},
     setNewForm: () =>{},
@@ -32,6 +34,7 @@ export const ContextProvider = ({children})=>{
     };
 
     const [newForm, setNewForm] = useState(false)
+    const [updateForm, setUpdateForm] = useState(false)
     const [editPage, setEditPage] = useState(false)
     const [refresh, setRefresh] = useState(false)
     const [listDisplay, setListDisplay] = useState("none")
@@ -47,7 +50,7 @@ export const ContextProvider = ({children})=>{
         }
       }
 
-    return  <StateContext.Provider value={{arrowRotate, setArrowRotate, user, token, newForm, refresh, editPage, listDisplay, setUser, setToken, setNewForm, setRefresh, setEditPage, setListDisplay}}>{children}</StateContext.Provider>
+    return  <StateContext.Provider value={{updateForm, setUpdateForm, arrowRotate, setArrowRotate, user, token, newForm, refresh, editPage, listDisplay, setUser, setToken, setNewForm, setRefresh, setEditPage, setListDisplay}}>{children}</StateContext.Provider>
 }
 
 export const useStateContext = () => {

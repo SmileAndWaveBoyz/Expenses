@@ -157,7 +157,7 @@ button{
     width: 100%;
     position: relative;
     top: 0;
-    z-index: 5;
+    z-index: 10;
 }
 
 
@@ -663,6 +663,14 @@ button{
     z-index: 4;
     background-color: white;
     overflow-y: scroll;
+}
+
+.nForm.update{
+    z-index: 6;
+}
+
+.blackBox.update{
+    z-index: 5;
 }
 
 .nForm__Padding{

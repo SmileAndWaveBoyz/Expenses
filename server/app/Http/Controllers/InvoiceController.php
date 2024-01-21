@@ -70,24 +70,25 @@ class InvoiceController extends Controller
     public function draft(Request $request)
     {
         $validatedData = $request->validate([
-            'clientAddress_city' => '',
-            'clientAddress_country' => '',
-            'clientAddress_postCode' => '',
-            'clientAddress_street' => '',
-            'clientEmail' => '',
-            'clientName' => '',
-            'createdAt' => '',
-            'description' => '',
-            'paymentTerms' => '',
-            'senderAddress_city' => '',
-            'senderAddress_country' => '',
-            'senderAddress_postCode' => '',
-            'senderAddress_street' => '',
-            'status' => '',
-            'items.*.name' => '',
-            'items.*.quantity' => '',
-            'items.*.price' => '',
+            'clientAddress_city' => 'nullable |string',
+            'clientAddress_country' => 'nullable |string',
+            'clientAddress_postCode' => 'nullable |string',
+            'clientAddress_street' => 'nullable |string',
+            'clientEmail' => 'nullable |email',
+            'clientName' => 'nullable |string',
+            'createdAt' => 'nullable |date',
+            'description' => 'nullable |string',
+            'paymentTerms' => 'nullable |integer',
+            'senderAddress_city' => 'nullable |string',
+            'senderAddress_country' => 'nullable |string',
+            'senderAddress_postCode' => 'nullable |string',
+            'senderAddress_street' => 'nullable |string',
+            'status' => 'nullable |string',
+            'items.*.name' => 'nullable |string',
+            'items.*.quantity' => 'nullable |integer',
+            'items.*.price' => 'nullable |numeric',
         ]);
+        
 
 
         $paymentTerms = $validatedData['paymentTerms'];

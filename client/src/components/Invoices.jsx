@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import axios from 'axios';
 
 function Invoices() {
-  const { token, refresh, editPage, listDisplay, setEditPage, setRefresh, setListDisplay, arrowRotate, setArrowRotate} = useStateContext()
+  const { token, refresh, editPage, listDisplay, setEditPage, setRefresh, setListDisplay, arrowRotate, setArrowRotate, setUpdateForm} = useStateContext()
   const [editPagePosition, setEditPagePosition] = useState(window.innerWidth)
   const [selectedID, setSelectedID] = useState(0)
   const [selectedItems, setSelectedItems] = useState([])
@@ -189,7 +189,7 @@ function Invoices() {
             <p className='editPage__status'>Status</p>
             <div className={`invoices__status ${data[selectedID].status}`}><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"> <circle className={`invoices__status-circle ${data[selectedID].status}`} cx="4" cy="4" r="4" /></svg> {data[selectedID].status}</div>
             <div className="editPage__headerButtons">
-              <button className='btn btn-transparent edit'>Edit</button>
+              <button className='btn btn-transparent edit' onClick={() => setUpdateForm(true)}>Edit</button>
               <button className='btn btn-red delete' onClick={() => deleteInvoice(data[selectedID].id)}>Delete</button>
               <button className='btn btn-primary paid'>Mark as Paid</button>
             </div>
@@ -282,7 +282,7 @@ function Invoices() {
 
           <footer className='editPage__footer '>
             <div className="container eFooter">
-            <button className='btn btn-transparent edit'>Edit</button>
+            <button className='btn btn-transparent edit' onClick={() => setUpdateForm(true)}>Edit</button>
             <button className='btn btn-red delete' onClick={() => deleteInvoice(data[selectedID].id)}>Delete</button>
             <button className='btn btn-primary paid'>Mark as Paid</button>
             </div>
