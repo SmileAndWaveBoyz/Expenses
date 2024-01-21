@@ -103,7 +103,6 @@ class InvoiceController extends Controller
 
         foreach ($validatedData['items'] as $itemData) {
             $validatedData['total'] += $itemData["price"] * $itemData["quantity"];
-
         }
 
         $invoiceID = $this->generateUniqueInvoiceID();
@@ -170,4 +169,65 @@ class InvoiceController extends Controller
             return response()->json(['message' => 'Error deleting invoice'], 500);
         }
     }
+
+    public function update(Request $request, $id)
+    {
+        Log::info($id);
+        Log::info($request);
+        try {
+            $invoice = Invoice::findOrFail($id);
+
+            // Validate the request data
+            $validatedData = $request->validate([
+                'clientAddress_city' => 'required|string',
+                'clientAddress_country' => 'required|string',
+                'clientAddress_postCode' => 'required|string',
+                'clientAddress_street' => 'required|string',
+                'clientEmail' => 'required|email',
+                'clientName' => 'required|string',
+                'createdAt' => 'required|date',
+                'description' => 'required|string',
+                'paymentTerms' => 'required|integer',
+                'senderAddress_city' => 'required|string',
+                'senderAddress_country' => 'required|string',
+                'senderAddress_postCode' => 'required|string',
+                'senderAddress_street' => 'required|string',
+                'status' => 'required|string',
+                'items.*.name' => 'required|string',
+                'items.*.quantity' => 'required|integer',
+                'items.*.price' => 'required|numeric',
+            ]);
+
+            $paymentTerms = $validatedData['paymentTerms'];
+            $createdAt = $validatedData['createdAt'];
+
+            $paymentDue = date('Y-m-d', strtotime($createdAt . ' + ' . $paymentTerms . ' days'));
+        
+            $validatedData['paymentDue'] = $paymentDue;
+            $validatedData['total'] = 0;
+
+            foreach ($validatedData['items'] as $itemData) {
+                $validatedData['total'] += $itemData["price"] * $itemData["quantity"];
+            }
+
+            // Update the invoice attributes
+            $invoice->update($validatedData);
+
+            // Delete existing items associated with the invoice
+            $invoice->items()->delete();
+
+            // Create and associate new items based on the updated data
+            foreach ($validatedData['items'] as $itemData) {
+                $itemData['total'] = $itemData['price'] * $itemData['quantity'];
+                $item = new Item($itemData);
+                $invoice->items()->save($item);
+            }
+
+            return response()->json(['message' => 'Invoice updated successfully']);
+        } catch (\Exception $e) {
+            Log::info($e);
+            return response()->json(['message' => 'Error updating invoice'], 500);
+        }
+    }
+
 }

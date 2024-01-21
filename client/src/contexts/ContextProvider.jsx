@@ -9,6 +9,8 @@ const StateContext = createContext({
     listDisplay: "none",
     arrowRotate: 180,
     updateForm: 0,
+    selectedData: [],
+    selectedItems: [],
     setUpdateForm: () => {},
     setUser: () => {},
     setToken: () => {},
@@ -16,13 +18,16 @@ const StateContext = createContext({
     setRefresh: () => {},
     setEditPage: () => {},
     setListDisplay: () => {},
-    setArrowRotate: () => {}
+    setArrowRotate: () => {},
+    setSelectedData: () => {},
+    setSelectedItems: () => [],
+
 })
 
 export const ContextProvider = ({children})=>{
 
     const [user, setUser] = useState({})
-    
+    const [selectedData, setSelectedData] = useState([])
     const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"))
     const setToken = (token)=>{
         _setToken(token);
@@ -39,6 +44,7 @@ export const ContextProvider = ({children})=>{
     const [refresh, setRefresh] = useState(false)
     const [listDisplay, setListDisplay] = useState("none")
     const [arrowRotate, setArrowRotate] = useState(180)
+    const [selectedItems, setSelectedItems] = useState([])
 
     function filterButtonClick() {
         if (arrowRotate == 180) {
@@ -50,7 +56,7 @@ export const ContextProvider = ({children})=>{
         }
       }
 
-    return  <StateContext.Provider value={{updateForm, setUpdateForm, arrowRotate, setArrowRotate, user, token, newForm, refresh, editPage, listDisplay, setUser, setToken, setNewForm, setRefresh, setEditPage, setListDisplay}}>{children}</StateContext.Provider>
+    return  <StateContext.Provider value={{selectedItems, setSelectedItems, selectedData, setSelectedData, updateForm, setUpdateForm, arrowRotate, setArrowRotate, user, token, newForm, refresh, editPage, listDisplay, setUser, setToken, setNewForm, setRefresh, setEditPage, setListDisplay}}>{children}</StateContext.Provider>
 }
 
 export const useStateContext = () => {

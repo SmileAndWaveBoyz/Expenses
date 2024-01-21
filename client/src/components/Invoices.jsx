@@ -5,10 +5,10 @@ import Header from '../components/Header';
 import axios from 'axios';
 
 function Invoices() {
-  const { token, refresh, editPage, listDisplay, setEditPage, setRefresh, setListDisplay, arrowRotate, setArrowRotate, setUpdateForm} = useStateContext()
+  const { token, refresh, editPage, listDisplay, setEditPage, setRefresh, setListDisplay, arrowRotate, setArrowRotate, setUpdateForm, setSelectedData, selectedItems, setSelectedItems} = useStateContext()
   const [editPagePosition, setEditPagePosition] = useState(window.innerWidth)
   const [selectedID, setSelectedID] = useState(0)
-  const [selectedItems, setSelectedItems] = useState([])
+
 
   const [data, setData] = useState([])
   const [itemData, setItemData] = useState([])
@@ -96,6 +96,9 @@ function Invoices() {
           setEditPagePosition(window.innerWidth)
         }
     }
+
+    setSelectedData(data[selectedID])
+    console.log("Selected", data[selectedID]);
   
     return () => {
       window.removeEventListener('resize', handleResize)
