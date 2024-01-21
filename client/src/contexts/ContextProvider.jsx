@@ -6,11 +6,15 @@ const StateContext = createContext({
     newForm: 0,
     refresh: false,
     editPage: false,
+    listDisplay: "none",
+    arrowRotate: 180,
     setUser: () => {},
     setToken: () => {},
     setNewForm: () =>{},
     setRefresh: () => {},
-    setEditPage: () => {}
+    setEditPage: () => {},
+    setListDisplay: () => {},
+    setArrowRotate: () => {}
 })
 
 export const ContextProvider = ({children})=>{
@@ -30,8 +34,20 @@ export const ContextProvider = ({children})=>{
     const [newForm, setNewForm] = useState(false)
     const [editPage, setEditPage] = useState(false)
     const [refresh, setRefresh] = useState(false)
+    const [listDisplay, setListDisplay] = useState("none")
+    const [arrowRotate, setArrowRotate] = useState(180)
 
-    return  <StateContext.Provider value={{user, token, newForm, refresh, editPage, setUser, setToken, setNewForm, setRefresh, setEditPage}}>{children}</StateContext.Provider>
+    function filterButtonClick() {
+        if (arrowRotate == 180) {
+          setArrowRotate(0)
+          setListDisplay("block")
+        } else{
+          setArrowRotate(180)
+          setListDisplay("none")
+        }
+      }
+
+    return  <StateContext.Provider value={{arrowRotate, setArrowRotate, user, token, newForm, refresh, editPage, listDisplay, setUser, setToken, setNewForm, setRefresh, setEditPage, setListDisplay}}>{children}</StateContext.Provider>
 }
 
 export const useStateContext = () => {

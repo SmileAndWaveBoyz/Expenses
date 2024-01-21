@@ -227,7 +227,6 @@ button:focus {
 #header {
   position: relative;
   margin-bottom: 2rem;
-  z-index: 0;
   margin-top: 6.75rem;
   z-index: 1;
 }
@@ -261,6 +260,8 @@ button:focus {
   flex-direction: row;
   height: 1rem;
   cursor: pointer;
+  position: relative;
+  z-index: 4;
 }
 
 .header__filterButtonSVG {
@@ -287,6 +288,7 @@ button:focus {
 .inputContainer {
   position: absolute;
   top: 4rem;
+  z-index: 4;
 }
 
 .inputContainer__form {
@@ -565,6 +567,18 @@ button:focus {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.48);
   z-index: 3;
+  cursor: pointer;
+  overflow: none;
+}
+
+.clearBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 99vw;
+  height: 99vh;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1;
   cursor: pointer;
   overflow: none;
 }

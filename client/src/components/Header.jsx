@@ -2,10 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useStateContext } from '../contexts/ContextProvider';
 
 function Header() {
-    const { newForm, setNewForm} = useStateContext()
-
-    const [arrowRotate, setArrowRotate] = useState(180)
-    const [listDisplay, setListDisplay] = useState("none")
+    const {newForm, listDisplay, setNewForm, setListDisplay, arrowRotate, setArrowRotate} = useStateContext()
     
     function filterButtonClick() {
       if (arrowRotate == 180) {
@@ -15,7 +12,6 @@ function Header() {
         setArrowRotate(180)
         setListDisplay("none")
       }
-      
     }
 
     function newInvoice() {
@@ -25,11 +21,12 @@ function Header() {
     return (
     <header className='container d-flex justify-content-between align-items-center' id='header'>
         <div className="header" >
-        <h1>Invoices</h1>
-        <h3><h3 className='mobileNoDisplay'>There are </h3> 7 <h3 className='mobileNoDisplay'>total</h3> invoices</h3>
+          <h1>Invoices</h1>
+          <h3><h3 className='mobileNoDisplay'>There are </h3> 7 <h3 className='mobileNoDisplay'>total</h3> invoices</h3>
         </div>
 
         <div className="header__right d-flex justify-content-between align-items-center">
+        
         
         <button onClick={filterButtonClick}  className='header__filterButton'><p className='header__filterPar'>Filter&nbsp;</p> <p className='header__filterPar mobileNoDisplay'> by status</p>  <svg style={{transform: `rotateX(${arrowRotate}deg)`}}  className='header__filterButtonSVG' xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">  <path d="M1 6.22803L5.2279 2.00013L9.4558 6.22803" stroke="#7C5DFA" stroke-width="2"/></svg></button>
         <div className="inputContainer">

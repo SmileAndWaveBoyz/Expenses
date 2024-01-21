@@ -265,7 +265,6 @@ button{
 #header{
     position: relative;
     margin-bottom: 2rem;
-    z-index: 0;
     margin-top: 6.75rem;
     z-index: 1;
 }
@@ -300,6 +299,8 @@ button{
     flex-direction: row;
     height: 1rem;
     cursor: pointer;
+    position: relative;
+    z-index: 4;
 }
 
 
@@ -328,6 +329,7 @@ button{
 .inputContainer{
     position: absolute;
     top: 4rem;
+    z-index: 4;
 }
 
 .inputContainer__form{
@@ -638,6 +640,19 @@ button{
     cursor: pointer;
     overflow: none;
 }
+
+.clearBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99vw;
+    height: 99vh;
+    background-color: rgb(0, 0, 0, 0);
+    z-index: 1;
+    cursor: pointer;
+    overflow: none;
+}
+
 .nForm{
     height: 100%;
     width: 100%;

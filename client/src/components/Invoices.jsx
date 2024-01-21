@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import axios from 'axios';
 
 function Invoices() {
-  const { token, refresh, editPage, setEditPage, setRefresh} = useStateContext()
+  const { token, refresh, editPage, listDisplay, setEditPage, setRefresh, setListDisplay, arrowRotate, setArrowRotate} = useStateContext()
   const [editPagePosition, setEditPagePosition] = useState(window.innerWidth)
   const [selectedID, setSelectedID] = useState(0)
   const [selectedItems, setSelectedItems] = useState([])
@@ -122,9 +122,24 @@ function Invoices() {
   function viewInvoiceBack() {
     setEditPage(false)
   }
+
+  function clearBoxClick() {
+    setListDisplay("none")
+
+    if (arrowRotate == 180) {
+      setArrowRotate(0)
+      setListDisplay("block")
+    } else{
+      setArrowRotate(180)
+      setListDisplay("none")
+    }
+  }
+
+  
   
   return (
     <div className='home'>
+      <div className="clearBox" onClick={clearBoxClick} style={{display: listDisplay}}></div>
       <div className="invoicePage">
 
       <main id='invoices'> 
