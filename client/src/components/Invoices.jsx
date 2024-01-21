@@ -7,6 +7,7 @@ function Invoices() {
   const { token, refresh, editPage, setEditPage} = useStateContext()
   const [editPagePosition, setEditPagePosition] = useState(window.innerWidth)
   const [selectedID, setSelectedID] = useState(0)
+  const [selectedItems, setSelectedItems] = useState([])
 
   const [data, setData] = useState([])
   const [itemData, setItemData] = useState([])
@@ -29,7 +30,7 @@ function Invoices() {
 
         const data = await response.json();
         setData(data.invoices)
-        console.log('Invoices:', data.invoices);
+        // console.log('Invoices:', data.invoices);
       } catch (error) {
         console.error('Error fetching invoices:', error.message);
       }
@@ -53,7 +54,7 @@ function Invoices() {
 
         const data = await response.json();
         setItemData(data.items)
-        console.log('Items:', data.items);
+        // console.log('Items:', data.items);
       } catch (error) {
         console.error('Error fetching items:', error.message);
       }
@@ -79,6 +80,8 @@ function Invoices() {
           setEditPagePosition(window.innerWidth)
         }
     }
+
+    console.log(selectedItems);
   
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -90,16 +93,16 @@ function Invoices() {
     setSelectedID(id)
     setEditPage(true)
 
-    let selectedItems = []
+    let selectedItemsVar = []
 
     for (let i = 0; i < itemData.length; i++) {
-      if (itemData[i].id === data[id].id) {
-        selectedItems.push(itemData[i])
-      }
+
+        if (data[id].id === itemData[i].invoice_id) {
+          selectedItemsVar.push(itemData[i])
+        }
     }
-
-    console.log(selectedItems);
-
+    // console.log(selectedItemsVar);
+    setSelectedItems(selectedItemsVar)
   }
 
   function viewInvoiceBack() {
@@ -150,16 +153,21 @@ function Invoices() {
       <div className="editPage" style={{transform: `translateX(-${editPagePosition}px)`}}>
         <div className="container">
           <button onClick={viewInvoiceBack} className='nForm__backButton edit'><svg className='nForm__backButtonSVG'  width="6" height="11" viewBox="0 0 6 11" fill="none">  <path d="M4.3418 0.88623L0.113895 5.11413L4.3418 9.34203" stroke="#9277FF" stroke-width="2"/></svg>Go back</button>
-        
+        {
+          (data.length > 0) ?
+
           <header className='editPage__header'>
             <p className='editPage__status'>Status</p>
-            <div className={`invoices__status pending`}><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"> <circle className={`invoices__status-circle pending`} cx="4" cy="4" r="4" /></svg> Pending</div>
+            <div className={`invoices__status pending`}><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"> <circle className={`invoices__status-circle pending`} cx="4" cy="4" r="4" /></svg> {data[selectedID].status}</div>
             <div className="editPage__headerButtons">
               <button className='btn btn-transparent edit'>Edit</button>
               <button className='btn btn-red delete'>Delete</button>
               <button className='btn btn-primary paid'>Mark as Paid</button>
             </div>
           </header>
+          :
+          null
+          }
 
           {
             (data.length > 0) ?
@@ -206,32 +214,38 @@ function Invoices() {
               </div>
             </div>
 
-            <div className="editPage__bottom">
-              <div className="editPage__itemContainer">
-                <div className="editPage__quantityContainer">
-                  <div className="editPage__quantityContainerLeft">
-                    <h3 className='editPage__quantityHeading'>Banner Design</h3>
-                    <p className='editPage_quantityPar'>1 x £ 156.00</p>
-                  </div>
-                  <div className="editPage__quantityContainerRight">
-                    <p className='editPage__quantityContainerAmount'>£ 156.00</p>
-                  </div>
-                </div>
-                <div className="editPage__quantityContainer">
-                  <div className="editPage__quantityContainerLeft">
-                    <h3 className='editPage__quantityHeading'>Banner Design</h3>
-                    <p className='editPage_quantityPar'>1 x £ 156.00</p>
-                  </div>
-                  <div className="editPage__quantityContainerRight">
-                    <p className='editPage__quantityContainerAmount'>£ 156.00</p>
-                  </div>
-                </div>
-              </div>
+            {
+              (selectedItems.length > 0) ?
+
+              <div className="editPage__bottom">
+              {
+                selectedItems.map((item)=>{
+                  return(
+
+                    <div className="editPage__itemContainer">
+                      <div className="editPage__quantityContainer">
+                        <div className="editPage__quantityContainerLeft">
+                          <h3 className='editPage__quantityHeading'>{item.name}</h3>
+                          <p className='editPage_quantityPar'>{item.quantity} x £ {item.price}</p>
+                        </div>
+                        <div className="editPage__quantityContainerRight">
+                          <p className='editPage__quantityContainerAmount'>£ {item.quantity * item.price}</p>
+                        </div>
+                      </div>
+                    </div>
+                    )
+                  
+                })
+              }
+
               <div className="editPage__totalContainer">
                 <p className="editPage__totalHeading">Grand Total</p>
-                <p className='editPage__totalAmount'>£ 556.00</p>
+                <p className='editPage__totalAmount'>£ {data[selectedID].total}</p>
               </div>
             </div>
+            :
+            null
+            }
           </div>
           :
           null
