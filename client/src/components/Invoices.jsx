@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import axios from 'axios';
 
 function Invoices() {
-  const { token, refresh, editPage, setEditPage} = useStateContext()
+  const { token, refresh, editPage, setEditPage, setRefresh} = useStateContext()
   const [editPagePosition, setEditPagePosition] = useState(window.innerWidth)
   const [selectedID, setSelectedID] = useState(0)
   const [selectedItems, setSelectedItems] = useState([])
@@ -25,13 +25,10 @@ function Invoices() {
           },
         });
 
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
 
         const data = await response.json();
         setData(data.invoices)
-        // console.log('Invoices:', data.invoices);
+
       } catch (error) {
         console.error('Error fetching invoices:', error.message);
       }
@@ -48,10 +45,6 @@ function Invoices() {
             'Authorization': `Bearer ${token}`,
           },
         });
-
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
 
         const data = await response.json();
         setItemData(data.items)
@@ -75,10 +68,12 @@ function Invoices() {
         },
       });
 
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
+      if (refresh) {
+        setRefresh(false)
+      } else{
+        setRefresh(true)
       }
-
+      setEditPage(false)
 
     } catch (error) {
        alert(error)
