@@ -172,7 +172,7 @@ function Invoices() {
 
           <header className='editPage__header'>
             <p className='editPage__status'>Status</p>
-            <div className={`invoices__status pending`}><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"> <circle className={`invoices__status-circle pending`} cx="4" cy="4" r="4" /></svg> {data[selectedID].status}</div>
+            <div className={`invoices__status ${data[selectedID].status}`}><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"> <circle className={`invoices__status-circle ${data[selectedID].status}`} cx="4" cy="4" r="4" /></svg> {data[selectedID].status}</div>
             <div className="editPage__headerButtons">
               <button className='btn btn-transparent edit'>Edit</button>
               <button className='btn btn-red delete' onClick={() => deleteInvoice(data[selectedID].id)}>Delete</button>
