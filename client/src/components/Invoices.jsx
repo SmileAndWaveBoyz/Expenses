@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import jsonData from './data.json';
 import { useStateContext } from '../contexts/ContextProvider';
 import Header from '../components/Header';
+import axios from 'axios';
 
 function Invoices() {
   const { token, refresh, editPage, setEditPage} = useStateContext()
@@ -64,6 +65,26 @@ function Invoices() {
 
   }, [refresh]);
 
+  async function deleteInvoice(invoiceId) {
+    try {
+      const response = await fetch(`http://192.168.1.96:8000/api/invoices/${invoiceId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+
+    } catch (error) {
+       alert(error)
+    }
+  }
+
   useEffect(() => {
 
     if (editPage) {
@@ -80,8 +101,6 @@ function Invoices() {
           setEditPagePosition(window.innerWidth)
         }
     }
-
-    console.log(selectedItems);
   
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -161,7 +180,7 @@ function Invoices() {
             <div className={`invoices__status pending`}><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"> <circle className={`invoices__status-circle pending`} cx="4" cy="4" r="4" /></svg> {data[selectedID].status}</div>
             <div className="editPage__headerButtons">
               <button className='btn btn-transparent edit'>Edit</button>
-              <button className='btn btn-red delete'>Delete</button>
+              <button className='btn btn-red delete' onClick={() => deleteInvoice(data[selectedID].id)}>Delete</button>
               <button className='btn btn-primary paid'>Mark as Paid</button>
             </div>
           </header>
@@ -254,7 +273,7 @@ function Invoices() {
           <footer className='editPage__footer '>
             <div className="container eFooter">
             <button className='btn btn-transparent edit'>Edit</button>
-            <button className='btn btn-red delete'>Delete</button>
+            <button className='btn btn-red delete' onClick={() => deleteInvoice(data[selectedID].id)}>Delete</button>
             <button className='btn btn-primary paid'>Mark as Paid</button>
             </div>
           </footer>

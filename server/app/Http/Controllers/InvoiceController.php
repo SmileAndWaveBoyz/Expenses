@@ -97,4 +97,21 @@ class InvoiceController extends Controller
 
         return $invoiceID;
     }
+
+    public function destroy($id)
+    {
+        
+        try {
+            $invoice = Invoice::findOrFail($id);
+
+            // Delete the corresponding items
+            $invoice->items()->delete();
+
+            $invoice->delete();
+
+            return response()->json(null, 204); // Respond with a 204 No Content status
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error deleting invoice'], 500);
+        }
+    }
 }
