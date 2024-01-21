@@ -53,7 +53,6 @@ class InvoiceController extends Controller
         $validatedData['invoiceID'] = $invoiceID;
         
         
-
         // Create a new invoice
         $invoice = Invoice::create($validatedData);
 
@@ -66,6 +65,62 @@ class InvoiceController extends Controller
         }
 
         return response()->json(['message' => 'Invoice created successfully']);
+    }
+
+    public function draft(Request $request)
+    {
+        $validatedData = $request->validate([
+            'clientAddress_city' => '',
+            'clientAddress_country' => '',
+            'clientAddress_postCode' => '',
+            'clientAddress_street' => '',
+            'clientEmail' => '',
+            'clientName' => '',
+            'createdAt' => '',
+            'description' => '',
+            'paymentTerms' => '',
+            'senderAddress_city' => '',
+            'senderAddress_country' => '',
+            'senderAddress_postCode' => '',
+            'senderAddress_street' => '',
+            'status' => '',
+            'items.*.name' => '',
+            'items.*.quantity' => '',
+            'items.*.price' => '',
+        ]);
+
+
+        $paymentTerms = $validatedData['paymentTerms'];
+        $createdAt = $validatedData['createdAt'];
+        
+        
+        // Calculate paymentDue by adding paymentTerms days to createdAt
+        $paymentDue = date('Y-m-d', strtotime($createdAt . ' + ' . $paymentTerms . ' days'));
+        
+        $validatedData['paymentDue'] = $paymentDue;
+        $validatedData['total'] = 0;
+
+        foreach ($validatedData['items'] as $itemData) {
+            $validatedData['total'] += $itemData["price"] * $itemData["quantity"];
+
+        }
+
+        $invoiceID = $this->generateUniqueInvoiceID();
+        $validatedData['invoiceID'] = $invoiceID;
+        
+        
+        // // Create a new invoice
+        $invoice = Invoice::create($validatedData);
+
+        // Log::info($invoice);
+        
+        foreach ($validatedData['items'] as $itemData) {
+            $itemData["total"] = $itemData["price"] * $itemData["quantity"];
+            $item = new Item($itemData);
+            $invoice->items()->save($item);
+        }
+
+        return response()->json(['message' => 'Draft created successfully']);
     }
 
     public function index()

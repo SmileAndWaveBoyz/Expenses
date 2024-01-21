@@ -141,7 +141,7 @@ function Invoices() {
                         <div className="invoices_dateContainer">
                             <p className='invoices__date due'>Due</p> <p className='invoices__date'> {d.paymentDue}</p> 
                         </div>
-                        <h3 className='invoices__id'>£ {d.total.toFixed(2)}</h3>
+                        <h3 className='invoices__id'>£ {(d.total) ? d.total.toFixed(2): "Null"}</h3>
                       </div>
 
                       <div className="invoices_right">

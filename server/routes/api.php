@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('/invoices', [InvoiceController::class, 'index']);
     Route::get('/items', [ItemController::class, 'index']);
     Route::post('/newInvoice', [InvoiceController::class, 'store']);
+    Route::post('/newDraft', [InvoiceController::class, 'draft']);
     Route::delete('/invoices/{id}', [InvoiceController::class, 'destroy']);
 });
 

@@ -78,6 +78,52 @@ function NewInvoiceForm(props) {
     }
     
 
+    function draft(event) {
+        event.preventDefault()
+        const payload = {
+            clientAddress_city: clientAddressCityRef.current.value,
+            clientAddress_country: clientAddressCountryRef.current.value,
+            clientAddress_postCode: clientAddressPostCodeRef.current.value,
+            clientAddress_street: clientAddressStreetRef.current.value,
+            clientEmail: clientsEmailRef.current.value,
+            clientName: clientsNameRef.current.value,
+            createdAt: invoiceDateRef.current.value,
+            description: projectDescriptionRef.current.value,
+            paymentTerms: paymentTermsRef.current.value,
+            senderAddress_city: senderAddressCityRef.current.value,
+            senderAddress_country: senderAddressCountryRef.current.value,
+            senderAddress_postCode: senderAddressPostCodeRef.current.value,
+            senderAddress_street: senderAddressStreetRef.current.value,
+            status: "draft",
+            items: items
+        }
+
+        setErrors(null)
+        console.log(payload);
+        axiosClient.post('/newDraft', payload)
+      .then(({data})=>{
+        console.log(data)
+        setNewForm(false)
+        refreshForm()
+        if (refresh === false) {
+            setRefresh(true)
+        } else{
+            setRefresh(false)
+        }
+        
+      })
+      .catch((error) => {
+        const response = error. response
+        if (response && response.status === 422) {
+          if (response.data.errors) {
+            console.log("Error");
+            // console.log(response.data.errors);
+            setErrors(response.data.errors)
+          } 
+        }
+      })
+    }
+
     function onSubmit(event) {
         event.preventDefault()
         const payload = {
@@ -372,7 +418,7 @@ function NewInvoiceForm(props) {
             <div className="nForm__rectangle"> </div>
             <div className="nForm__Padding nForm_row container">
                 <button className='btn btn-transparent nForm__discardButton '>Discard</button>
-                <button className='btn btn-dark nForm__saveButton '>Save as Draft</button>
+                <button className='btn btn-dark nForm__saveButton ' onClick={draft}>Save as Draft</button>
                 <button className='btn btn-primary nForm__sendButton' onClick={onSubmit}>Save & Send</button>
             </div>
         </div>
