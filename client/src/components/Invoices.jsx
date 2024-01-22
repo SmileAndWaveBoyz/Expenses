@@ -3,6 +3,7 @@ import jsonData from './data.json';
 import { useStateContext } from '../contexts/ContextProvider';
 import Header from '../components/Header';
 import axios from 'axios';
+import axiosClient from '../axios-client';
 
 function Invoices() {
   const { token, refresh, editPage, listDisplay, setEditPage, setRefresh, setListDisplay, arrowRotate, setArrowRotate, setUpdateForm, setSelectedData, selectedItems, setSelectedItems} = useStateContext()
@@ -138,7 +139,25 @@ function Invoices() {
     }
   }
 
-  
+  function markAsPaid(){
+
+    const payload = {
+      status: "paid",
+  };
+
+    axiosClient.put(`/markAsPaid/${data[selectedID].id}`, payload)
+    .then(({ data }) => {
+        console.log(data);
+        if (!refresh) {
+            setRefresh(true);
+        } else {
+            setRefresh(false);
+        }
+    })
+    .catch((error) => {
+        alert(error)
+    });
+  }  
   
   return (
     <div className='home'>
@@ -194,7 +213,7 @@ function Invoices() {
             <div className="editPage__headerButtons">
               <button className='btn btn-transparent edit' onClick={() => setUpdateForm(true)}>Edit</button>
               <button className='btn btn-red delete' onClick={() => deleteInvoice(data[selectedID].id)}>Delete</button>
-              <button className='btn btn-primary paid'>Mark as Paid</button>
+              <button className='btn btn-primary paid' onClick={() => markAsPaid()}>Mark as Paid</button>
             </div>
           </header>
           :
@@ -287,7 +306,7 @@ function Invoices() {
             <div className="container eFooter">
             <button className='btn btn-transparent edit' onClick={() => setUpdateForm(true)}>Edit</button>
             <button className='btn btn-red delete' onClick={() => deleteInvoice(data[selectedID].id)}>Delete</button>
-            <button className='btn btn-primary paid'>Mark as Paid</button>
+            <button className='btn btn-primary paid' onClick={() => markAsPaid()}>Mark as Paid</button>
             </div>
           </footer>
         </div>

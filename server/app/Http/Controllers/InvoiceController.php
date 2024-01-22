@@ -279,4 +279,19 @@ class InvoiceController extends Controller
         return response()->json(['message' => 'Draft updated successfully']);
     }
 
+    public function markAsPaid(Request $request, $id) {
+        Log::info($id);
+        Log::info($request);
+
+        $invoice = Invoice::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'status' => 'nullable |string',
+        ]);
+
+        $invoice->update($validatedData);
+
+        return response()->json(['message' => 'Paid, updated successfully']);
+    }
+
 }
