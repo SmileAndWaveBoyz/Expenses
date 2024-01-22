@@ -6,7 +6,7 @@ import axios from 'axios';
 import axiosClient from '../axios-client';
 
 function Invoices() {
-  const { token, refresh, editPage, listDisplay, setEditPage, setRefresh, setListDisplay, arrowRotate, setArrowRotate, setUpdateForm, setSelectedData, selectedItems, setSelectedItems} = useStateContext()
+  const { token, refresh, editPage, listDisplay, setEditPage, setRefresh, setListDisplay, arrowRotate, setArrowRotate, setUpdateForm, setSelectedData, selectedItems, setSelectedItems, filters, setFilters} = useStateContext()
   const [editPagePosition, setEditPagePosition] = useState(window.innerWidth)
   const [selectedID, setSelectedID] = useState(0)
 

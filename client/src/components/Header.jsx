@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useStateContext } from '../contexts/ContextProvider';
 
 function Header() {
-    const {newForm, listDisplay, setNewForm, setListDisplay, arrowRotate, setArrowRotate} = useStateContext()
+    const {newForm, listDisplay, setNewForm, setListDisplay, arrowRotate, setArrowRotate, filters, setFilters} = useStateContext()
     
     function filterButtonClick() {
       if (arrowRotate == 180) {
@@ -16,6 +16,49 @@ function Header() {
 
     function newInvoice() {
       setNewForm(true)
+    }
+
+    function checkBox(event) {
+
+      switch (event.target.name) {
+        case "draft":
+          if (filters.draft) {
+            setFilters((prevFilters) =>{
+              return {...prevFilters, draft: false}
+            })
+          }  else{
+            setFilters((prevFilters) =>{
+              return {...prevFilters, draft: true}
+            })
+          }
+          break;
+        case "pending":
+          if (filters.pending) {
+            setFilters((prevFilters) =>{
+              return {...prevFilters, pending: false}
+            })
+          }  else{
+            setFilters((prevFilters) =>{
+              return {...prevFilters, pending: true}
+            })
+          }
+          break;
+        case "paid":
+          if (filters.paid) {
+            setFilters((prevFilters) =>{
+              return {...prevFilters, paid: false}
+            })
+          }  else{
+            setFilters((prevFilters) =>{
+              return {...prevFilters, paid: true}
+            })
+          }
+          break;
+      
+        default:
+          break;
+      }
+
     }
     
     return (
@@ -32,15 +75,15 @@ function Header() {
         <div className="inputContainer">
             <form className='inputContainer__form' style={{display: listDisplay}}>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" />
+                <input class="form-check-input" type="checkbox" name="draft" onClick={checkBox}  defaultChecked />
                 <label class="form-check-label"> Draft</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value=""/>
+                <input class="form-check-input" type="checkbox" name="pending" onClick={checkBox}  defaultChecked />
                 <label class="form-check-label"> Pending</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value=""/>
+                <input class="form-check-input" type="checkbox" name="paid" onClick={checkBox}  defaultChecked />
                 <label class="form-check-label"> Paid </label>
             </div>
             </form>
