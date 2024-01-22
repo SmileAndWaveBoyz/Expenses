@@ -98,7 +98,8 @@ function UpdateInvoiceForm(props) {
     
 
     function draft(event) {
-        event.preventDefault()
+        event.preventDefault();
+    
         const payload = {
             clientAddress_city: clientAddressCityRef.current.value,
             clientAddress_country: clientAddressCountryRef.current.value,
@@ -115,32 +116,32 @@ function UpdateInvoiceForm(props) {
             senderAddress_street: senderAddressStreetRef.current.value,
             status: "draft",
             items: items
-        }
-
-        setErrors(null)
-        console.log(payload);
-        axiosClient.post('/newDraft', payload)
-      .then(({data})=>{
-        console.log(data)
-        updateForm(false)
-        refreshForm()
-        if (refresh === false) {
-            setRefresh(true)
-        } else{
-            setRefresh(false)
-        }
-        
-      })
-      .catch((error) => {
-        const response = error. response
-        if (response && response.status === 422) {
-          if (response.data.errors) {
-            console.log("Error");
-            // console.log(response.data.errors);
-            setErrors(response.data.errors)
-          } 
-        }
-      })
+        };
+    
+        setErrors(null);
+        console.log(selectedData.id);
+    
+        axiosClient.put(`/updateDraft/${selectedData.id}`, payload)
+            .then(({ data }) => {
+                console.log(data);
+                setUpdateForm(false);
+                refreshForm();
+                if (!refresh) {
+                    setRefresh(true);
+                } else {
+                    setRefresh(false);
+                }
+            })
+            .catch((error) => {
+                const response = error.response;
+                if (response && response.status === 422) {
+                    if (response.data.errors) {
+                        console.log("Error");
+                        // console.log(response.data.errors);
+                        setErrors(response.data.errors);
+                    }
+                }
+            });
     }
 
     function onSubmit(event) {
